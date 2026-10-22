@@ -166,3 +166,144 @@ if (form) {
     location.href = `mailto:info@luxesurfaces.in?subject=${encodeURIComponent("Website enquiry")}&body=${encodeURIComponent(body)}`;
   });
 }
+
+// ===== Extra motion =====
+if (!reduceMotion) {
+  // Headings: split into words that rise from behind a mask.
+  const splitNode = (node, counter) => {
+    [...node.childNodes].forEach((child) => {
+      if (child.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        child.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.append(" "); return; }
+          const w = document.createElement("span");
+          w.className = "w";
+          const inner = document.createElement("span");
+          inner.textContent = part;
+          inner.style.setProperty("--i", counter.n++);
+          w.append(inner);
+          frag.append(w);
+        });
+        child.replaceWith(frag);
+      } else if (child.nodeType === 1 && child.tagName !== "BR") {
+        splitNode(child, counter);
+      }
+    });
+  };
+  const headings = document.querySelectorAll("h1, h2, .copy h3, .brand-body h2");
+  headings.forEach((h) => {
+    const label = h.innerText.replace(/\s+/g, " ").trim();
+    splitNode(h, { n: 0 });
+    h.classList.add("split-words");
+    h.setAttribute("aria-label", label);
+    h.querySelectorAll(".w").forEach((w) => w.setAttribute("aria-hidden", "true"));
+  });
+  const wordIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add("in"); wordIO.unobserve(e.target); }
+    });
+  }, { threshold: 0.3 });
+  headings.forEach((h) => {
+    if (h.closest(".hero")) {
+      const start = () => setTimeout(() => h.classList.add("in"), 450);
+      if (document.documentElement.classList.contains("loaded")) start();
+      else new MutationObserver((_, obs) => { if (document.documentElement.classList.contains("loaded")) { start(); obs.disconnect(); } })
+        .observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    } else {
+      wordIO.observe(h);
+    }
+  });
+
+  // Stagger the episode list and make sure grouped children get their own delays.
+  document.querySelectorAll("#ep-list").forEach((list) => {
+    [...list.children].forEach((c, i) => { c.style.transitionDelay = `${i * 90}ms`; });
+  });
+  document.querySelectorAll(".legacy-cols, .copy.reveal").forEach((box) => {
+    [...box.children].forEach((c, i) => { c.style.transitionDelay = `${150 + i * 110}ms`; });
+  });
+
+  // Scroll progress bar
+  const bar = document.createElement("div");
+  bar.className = "progress";
+  document.body.append(bar);
+  const setBar = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? Math.min(scrollY / max, 1) : 0})`;
+  };
+  addEventListener("scroll", setBar, { passive: true });
+  setBar();
+
+  // Marquees speed up with scroll speed, then ease back
+  const strips = document.querySelectorAll(".marquee-track");
+  let lastY = scrollY, boost = 0;
+  const tickMarquee = () => {
+    const dy = Math.abs(scrollY - lastY);
+    lastY = scrollY;
+    boost += (Math.min(dy / 12, 5) - boost) * 0.12;
+    strips.forEach((t) => t.getAnimations().forEach((a) => { a.playbackRate = 1 + boost; }));
+    requestAnimationFrame(tickMarquee);
+  };
+  if (strips.length) requestAnimationFrame(tickMarquee);
+
+  const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (finePointer) {
+    // Tilt on cards, tiles and project cards
+    document.querySelectorAll(".card:not(.person), .brand, .img-card").forEach((el) => {
+      el.classList.add("tilt");
+      el.addEventListener("pointermove", (e) => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        el.classList.add("tilting");
+        el.style.transform = `perspective(900px) rotateX(${(-y * 7).toFixed(2)}deg) rotateY(${(x * 9).toFixed(2)}deg) translateY(-4px)`;
+      });
+      el.addEventListener("pointerleave", () => {
+        el.classList.remove("tilting");
+        el.style.transform = "";
+      });
+    });
+
+    // Magnetic buttons
+    document.querySelectorAll(".btn, .to-top, .wa").forEach((b) => {
+      b.addEventListener("pointermove", (e) => {
+        const r = b.getBoundingClientRect();
+        const x = (e.clientX - (r.left + r.width / 2)) * 0.25;
+        const y = (e.clientY - (r.top + r.height / 2)) * 0.35;
+        b.style.translate = `${x}px ${y}px`;
+      });
+      b.addEventListener("pointerleave", () => { b.style.translate = ""; });
+    });
+
+    // Cursor follower
+    const dot = document.createElement("div");
+    dot.className = "cursor";
+    document.body.append(dot);
+    let cx = 0, cy = 0, tx = 0, ty = 0;
+    addEventListener("pointermove", (e) => { tx = e.clientX; ty = e.clientY; dot.classList.add("on"); });
+    document.addEventListener("pointerleave", () => dot.classList.remove("on"));
+    const follow = () => {
+      cx += (tx - cx) * 0.2;
+      cy += (ty - cy) * 0.2;
+      dot.style.transform = `translate(${cx}px, ${cy}px)`;
+      requestAnimationFrame(follow);
+    };
+    follow();
+    document.querySelectorAll("a, button, .btn, input, textarea").forEach((el) => {
+      el.addEventListener("pointerenter", () => dot.classList.add("big"));
+      el.addEventListener("pointerleave", () => dot.classList.remove("big"));
+    });
+  }
+
+  // Page transitions: the curtain closes before leaving, and opens again if the page is restored from cache
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a[href]");
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || a.target === "_blank") return;
+    const url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || url.pathname === location.pathname && url.search === location.search) return;
+    e.preventDefault();
+    document.documentElement.classList.add("leaving");
+    setTimeout(() => { location.href = a.href; }, 420);
+  });
+  addEventListener("pageshow", (e) => { if (e.persisted) document.documentElement.classList.remove("leaving"); });
+}

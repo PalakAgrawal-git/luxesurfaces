@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brands | Luxe Surfaces</title>
+  <meta name="description" content="Our Global Network of Trusted Partners">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-light">
+
+<section class="page-hero">
+  <div class="wrap reveal">
+    <span class="eyebrow">Luxe Surfaces</span>
+    <h1>Our Global Network of Trusted Partners</h1>
+    <p>We collaborate with the world’s most respected ceramic and porcelain brands—leaders in innovation, sustainability, and expressive material design. Each partner brings a unique design philosophy, advanced manufacturing expertise, and a commitment to elevating modern architectural spaces.</p>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Eterni</span><span>Fiandre</span><span>Ariostea</span><span>Emil Ceramica</span><span>Versace</span><span>Flaviker</span><span>Porcelaingres</span><span>Porcelanosa</span><span>Sant'Agostino</span><span>Delconca</span><span>Panaria</span><span>Natucer</span><span>Inalco</span><span>Tecnografica</span>
+    <span>Eterni</span><span>Fiandre</span><span>Ariostea</span><span>Emil Ceramica</span><span>Versace</span><span>Flaviker</span><span>Porcelaingres</span><span>Porcelanosa</span><span>Sant'Agostino</span><span>Delconca</span><span>Panaria</span><span>Natucer</span><span>Inalco</span><span>Tecnografica</span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="grid g3 reveal">
+      <div class="card">
+        <span class="num">01</span>
+        <h3>Advanced Technical Ceramics</h3>
+        <p>From high-performance porcelain to large-format engineered slabs, our partners pioneer cutting-edge surface technologies that redefine durability, functionality, and design flexibility.</p>
+      </div>
+      <div class="card">
+        <span class="num">02</span>
+        <h3>Luxury Design</h3>
+        <p>We work with global design houses and prestigious ceramic manufacturers to bring fashion-inspired, artistic, and highly expressive surfaces to the world’s most refined spaces.</p>
+      </div>
+      <div class="card">
+        <span class="num">03</span>
+        <h3>Sustainable Surface Innovation</h3>
+        <p>Many of our partners are global leaders in eco-responsible manufacturing—combining reduced-impact production, recycled materials, and long-lasting quality to support a more sustainable built environment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>Our Brands</h2></div>
+    <div class="grid g4 reveal" id="brands"></div>
+  </div>
+</section>
+
+<script>
+  // Logos from the Brand logos Drive folder; Flaviker and Porcelaingres were not in it, so they show the name only.
+  const BRANDS = [
+    ["Eterni", "assets/brands/eterni.png"],
+    ["Fiandre", "assets/brands/fiandre.jpg"],
+    ["Ariostea", "assets/brands/ariostea.jpg"],
+    ["Emil Ceramica", "assets/brands/emil.jpg"],
+    ["Versace", "assets/brands/versace.jpg"],
+    ["Flaviker", null],
+    ["Porcelaingres", null],
+    ["Porcelanosa", "assets/brands/porcelanosa.jpg"],
+    ["Sant'Agostino", "assets/brands/santagostino.jpg"],
+    ["Delconca", "assets/brands/delconca.jpg"],
+    ["Panaria", "assets/brands/panaria.jpg"],
+    ["Natucer", "assets/brands/natucer.jpg"],
+    ["Inalco", "assets/brands/inalco.jpg"],
+    ["Tecnografica", "assets/brands/tecnografica.jpg"],
+  ];
+  document.getElementById("brands").innerHTML = BRANDS.map(([n, src]) => `
+    <a class="brand" href="contact.html">
+      ${src ? `<img src="${src}" alt="${n} logo" loading="lazy">` : `<h3>${n}</h3>`}
+      <span>${n}</span>
+      <small>Learn More</small>
+    </a>`).join("");
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KYAD PodCast | Luxe Surfaces</title>
+  <meta name="description" content="Design stories that transform surfaces">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-light">
+
+<section class="page-hero">
+  <div class="wrap reveal">
+    <span class="eyebrow">Luxe Surfaces</span>
+    <h1>Design stories that transform surfaces</h1>
+    <p>Exploring the art and craft of architectural design through conversations with industry leaders.<br>Dive deep into the world of surfaces and creativity.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a class="btn" style="align-self:center" href="#episodes">Explore</a>
+      <a class="btn" style="align-self:center" href="https://www.youtube.com/@luxe.surfaces?sub_confirmation=1" target="_blank" rel="noopener">Subscribe</a>
+    </div>
+  </div>
+</section>
+
+<section class="split dark">
+  <div class="media"><img src="https://static.wixstatic.com/media/027a73_cbdfac33827a429ebf104897e4424bbdf000.jpg" alt="KYAD podcast" loading="lazy"></div>
+  <div class="copy reveal">
+    <span class="eyebrow">About the Podcast</span>
+    <p>KYAD is Luxe Surfaces’ original podcast series where leading architects, designers, and creators share their perspectives on design, innovation, materials, and the stories behind iconic spaces.<br>With multiple seasons and industry-renowned guests, KYAD captures the ideas, philosophies, and inspirations shaping modern architecture and interiors.</p>
+    <a class="btn" href="https://www.youtube.com/@luxe.surfaces" target="_blank" rel="noopener">Listen</a>
+  </div>
+</section>
+
+<section id="episodes">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>Episode Spotlight</h2></div>
+    <div class="reveal" id="ep-list"></div>
+  </div>
+</section>
+
+<script>
+  const EPISODES = [
+    "KYAD | S2 | Karl Wadia | Ar.Hafeez Contractor",
+    "Kyad | Pune Edition | Ajinkya and Sanam Dhumal | Infinity",
+    "Epic Moments Ft. Tushar Mistry! 🚀 | S1E1 | Zaid Khan & Sharan Raikhanagar",
+    "KYAD Ft. Rajiv Shroff from Talati & Partners with Zaid Khan and Sharan Raikhangar | Episode 5",
+    "KYAD ft. Manish Dikshit from Aum Architects | Varun Marlecha and Zaid Khan | Episode 4",
+  ];
+  document.getElementById("ep-list").innerHTML = EPISODES.map((t, i) => `
+    <div class="episode">
+      <span class="num">${String(i + 1).padStart(2, "0")}</span>
+      <span class="t">${t}</span>
+      <a class="btn" style="margin:0" href="https://www.youtube.com/@luxe.surfaces/search?query=${encodeURIComponent(t)}" target="_blank" rel="noopener">Watch</a>
+    </div>`).join("");
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

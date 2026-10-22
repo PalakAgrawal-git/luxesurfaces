@@ -94,6 +94,25 @@ btn.addEventListener("click", () => {
   if (open) header.classList.add("solid");
 });
 
+// Opening: the page fades up from dark, then the hero copy rises into place.
+document.body.insertAdjacentHTML("afterbegin", '<div class="curtain" aria-hidden="true"></div>');
+const reveal = () => document.documentElement.classList.add("loaded");
+// Lift the curtain once fonts are ready (or after 600ms at most), without waiting for every image.
+Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 600))]).then(() => setTimeout(reveal, 150));
+
+// Image panels unveil from a slight zoom; cards in a grid arrive one after another.
+document.querySelectorAll(".split .media, .img-card, .gallery figure, .legacy-img").forEach((el) => {
+  if (el.tagName === "IMG") {
+    el.classList.remove("reveal");
+    el.outerHTML = `<div class="unveil">${el.outerHTML}</div>`;
+  } else {
+    el.classList.add("unveil");
+  }
+});
+document.querySelectorAll(".grid.reveal").forEach((grid) => {
+  [...grid.children].forEach((child, i) => { child.style.transitionDelay = `${Math.min(i, 8) * 90}ms`; });
+});
+
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e) => {
     if (e.isIntersecting) {
@@ -101,8 +120,41 @@ const io = new IntersectionObserver((entries) => {
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.15 });
-document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+}, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+document.querySelectorAll(".reveal, .unveil").forEach((el) => io.observe(el));
+
+// Scroll-linked drift: the hero sinks and fades as you leave it, panel images move slower than the page.
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const hero = document.querySelector(".hero");
+const heroMedia = hero && hero.querySelector("video, img");
+const heroCopy = hero && hero.querySelector(".hero-inner");
+const driftImgs = [...document.querySelectorAll(".split .media img, .split .media video")];
+driftImgs.forEach((m) => { m.dataset.drift = ""; m.style.height = "115%"; });
+
+let ticking = false;
+const drift = () => {
+  ticking = false;
+  const vh = innerHeight;
+  if (hero) {
+    const p = Math.min(Math.max(scrollY / hero.offsetHeight, 0), 1);
+    heroMedia.style.transform = `translateY(${p * 30}%) scale(${1 + p * 0.08})`;
+    if (document.documentElement.classList.contains("loaded")) {
+      heroCopy.style.transform = `translateY(${p * -80}px)`;
+      heroCopy.style.opacity = String(1 - p * 1.4);
+    }
+  }
+  driftImgs.forEach((m) => {
+    const r = m.parentElement.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > vh) return;
+    const p = (r.top + r.height / 2 - vh / 2) / vh; // -1 … 1 across the viewport
+    m.style.translate = `0 ${(-6.5 + p * 6.5).toFixed(2)}%`;
+  });
+};
+if (!reduceMotion) {
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(drift); } }, { passive: true });
+  addEventListener("resize", drift);
+  drift();
+}
 
 // The site has no backend; the contact form opens the visitor's mail app with the message filled in.
 const form = document.querySelector("#contact-form");

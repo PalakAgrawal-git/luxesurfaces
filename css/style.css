@@ -178,7 +178,8 @@ section { padding: clamp(64px, 10vw, 128px) 0; }
 .clients img { height: 72px; width: auto; object-fit: contain; filter: grayscale(1); opacity: .75; mix-blend-mode: multiply; }
 
 /* Team */
-.person img { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; margin-bottom: 1.2rem; }
+/* Portraits are full-length on a blue backdrop, so keep the top edge (heads) and show the whole figure. */
+.person img { aspect-ratio: 3 / 4; object-fit: cover; object-position: center top; width: 100%; margin-bottom: 1.2rem; background: #1d3a63; }
 .person h3 { font-size: 1.5rem; }
 .person p { font-size: .92rem; color: var(--muted); }
 .person.card { padding: 18px 18px 28px; }

@@ -7,7 +7,7 @@
   <meta name="description" content="Our Global Network of Trusted Partners">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="page-light">
@@ -56,28 +56,13 @@
   </div>
 </section>
 
+<script src="js/brands-data.js"></script>
 <script>
-  // Logos from the Brand logos Drive folder; Flaviker and Porcelaingres were not in it, so they show the name only.
-  const BRANDS = [
-    ["Eterni", "assets/brands/eterni.png"],
-    ["Fiandre", "assets/brands/fiandre.jpg"],
-    ["Ariostea", "assets/brands/ariostea.jpg"],
-    ["Emil Ceramica", "assets/brands/emil.jpg"],
-    ["Versace", "assets/brands/versace.jpg"],
-    ["Flaviker", null],
-    ["Porcelaingres", null],
-    ["Porcelanosa", "assets/brands/porcelanosa.jpg"],
-    ["Sant'Agostino", "assets/brands/santagostino.jpg"],
-    ["Delconca", "assets/brands/delconca.jpg"],
-    ["Panaria", "assets/brands/panaria.jpg"],
-    ["Natucer", "assets/brands/natucer.jpg"],
-    ["Inalco", "assets/brands/inalco.jpg"],
-    ["Tecnografica", "assets/brands/tecnografica.jpg"],
-  ];
-  document.getElementById("brands").innerHTML = BRANDS.map(([n, src]) => `
-    <a class="brand" href="contact.html">
-      ${src ? `<img src="${src}" alt="${n} logo" loading="lazy">` : `<h3>${n}</h3>`}
-      <span>${n}</span>
+  // Flaviker and Porcelaingres have no logo in the Drive folder, so they show the name only.
+  document.getElementById("brands").innerHTML = BRANDS.map((b) => `
+    <a class="brand" href="brand.html?b=${b.slug}">
+      ${b.logo ? `<img src="${b.logo}" alt="${b.name} logo" loading="lazy">` : `<h3>${b.name}</h3>`}
+      <span>${b.name}</span>
       <small>Learn More</small>
     </a>`).join("");
 </script>

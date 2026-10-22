@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brands | Luxe Surfaces</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-light">
+
+<main id="brand"></main>
+
+<script src="js/brands-data.js"></script>
+<script>
+  const IMG = "https://static.wixstatic.com/media/";
+  const slug = new URLSearchParams(location.search).get("b");
+  const i = Math.max(0, BRANDS.findIndex((b) => b.slug === slug));
+  const b = BRANDS[i];
+  const next = BRANDS[(i + 1) % BRANDS.length];
+  const prev = BRANDS[(i - 1 + BRANDS.length) % BRANDS.length];
+  document.title = `${b.name} | Luxe Surfaces`;
+
+  document.getElementById("brand").innerHTML = `
+    <section class="page-hero brand-hero">
+      <div class="wrap">
+        <a class="back" href="brands.html">← All brands</a>
+        ${b.logo ? `<img class="brand-logo" src="${b.logo}" alt="${b.name} logo">` : ""}
+        <h1>${b.name}</h1>
+        <p>${b.intro}</p>
+      </div>
+    </section>
+
+    <section class="brand-gallery">
+      <div class="wrap gallery">
+        ${b.images.map((f, n) => `<figure class="g${n}"><img src="${IMG + f}" alt="${b.name} surface ${n + 1}"></figure>`).join("")}
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap brand-body reveal">
+        <span class="eyebrow">About ${b.name}</span>
+        ${b.subhead ? `<h2>${b.subhead}</h2>` : ""}
+        ${b.body.map((p) => `<p>${p}</p>`).join("")}
+        <a class="btn" href="contact.html">Consultation</a>
+      </div>
+    </section>
+
+    <nav class="brand-nav wrap">
+      <a href="brand.html?b=${prev.slug}"><small>Previous</small>${prev.name}</a>
+      <a href="brand.html?b=${next.slug}" style="text-align:right"><small>Next</small>${next.name}</a>
+    </nav>`;
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

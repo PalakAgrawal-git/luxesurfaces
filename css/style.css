@@ -174,8 +174,10 @@ section { padding: clamp(64px, 10vw, 128px) 0; }
 
 /* Clients strip */
 .clients { overflow: hidden; padding: 64px 0; background: var(--stone); }
-.clients .marquee-track { animation-duration: 30s; gap: 72px; align-items: center; }
-.clients img { height: 72px; width: auto; object-fit: contain; filter: grayscale(1); opacity: .75; mix-blend-mode: multiply; }
+.clients .marquee-track { animation-duration: 36s; gap: 88px; align-items: center; }
+.clients .marquee-track { gap: 32px; }
+.clients img { height: 170px; width: 170px; object-fit: cover; background: #fff; border-radius: 4px; box-shadow: 0 8px 24px rgba(29, 32, 34, .06); }
+@media (max-width: 600px) { .clients img { height: 120px; width: 120px; } .clients .marquee-track { gap: 20px; } }
 
 /* Team */
 /* Portraits are full-length on a blue backdrop, so keep the top edge (heads) and show the whole figure. */

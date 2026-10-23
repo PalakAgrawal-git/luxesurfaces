@@ -105,12 +105,17 @@ try {
 const curtainLogo = firstVisit
   ? `<div class="curtain-logo">${[..."LUXE SURFACES"].map((c, i) => `<span style="--i:${i}">${c === " " ? "&nbsp;" : c}</span>`).join("")}</div>`
   : "";
-document.body.insertAdjacentHTML("afterbegin", `<div class="curtain" aria-hidden="true">${curtainLogo}</div>`);
+if (firstVisit) {
+  document.body.insertAdjacentHTML("afterbegin", `<div class="curtain" aria-hidden="true">${curtainLogo}</div>`);
+}
 const reveal = () => document.documentElement.classList.add("loaded");
-// Lift the curtain once fonts are ready (or after 600ms at most), without waiting for every image.
-// On the first page the logo gets ~1.3s to finish writing itself before the curtain goes.
-Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 600))])
-  .then(() => setTimeout(reveal, firstVisit ? 1300 : 150));
+if (firstVisit) {
+  // The logo gets ~1.3s to finish writing itself before the curtain lifts.
+  Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 600))]).then(() => setTimeout(reveal, 1300));
+} else {
+  // Moving between pages: no dark screen, the hero copy simply starts rising straight away.
+  setTimeout(reveal, 40);
+}
 
 // Image panels unveil from a slight zoom; cards in a grid arrive one after another.
 document.querySelectorAll(".split .media, .img-card, .gallery figure, .legacy-img").forEach((el) => {
@@ -287,18 +292,6 @@ if (!reduceMotion) {
       b.addEventListener("pointerleave", () => { b.style.translate = ""; });
     });
   }
-
-  // Page transitions: the curtain closes before leaving, and opens again if the page is restored from cache
-  document.addEventListener("click", (e) => {
-    const a = e.target.closest("a[href]");
-    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || a.target === "_blank") return;
-    const url = new URL(a.href, location.href);
-    if (url.origin !== location.origin || url.pathname === location.pathname && url.search === location.search) return;
-    e.preventDefault();
-    document.documentElement.classList.add("leaving");
-    setTimeout(() => { location.href = a.href; }, 420);
-  });
-  addEventListener("pageshow", (e) => { if (e.persisted) document.documentElement.classList.remove("leaving"); });
 }
 
 // ===== More motion, round two =====

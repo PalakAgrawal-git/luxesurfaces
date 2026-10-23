@@ -390,8 +390,14 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
 .progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--clay); transform: scaleX(0); transform-origin: 0 50%; z-index: 120; pointer-events: none; }
 
 
-/* Leaving a page: curtain closes */
-.leaving .curtain { opacity: 1; transition: opacity .4s var(--ease); }
+/* Page to page: native crossfade (Chrome/Edge/Safari), header stays put. Older browsers just switch instantly. */
+@view-transition { navigation: auto; }
+.site-header { view-transition-name: site-header; }
+::view-transition-old(root) { animation: .28s var(--ease) both vt-out; }
+::view-transition-new(root) { animation: .38s var(--ease) both vt-in; }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; } }
+::view-transition-group(site-header) { animation-duration: .38s; }
 
 /* Footer links nudge */
 .site-footer li a { display: inline-block; transition: transform .3s var(--ease-out), color .3s; }

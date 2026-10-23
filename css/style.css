@@ -218,13 +218,13 @@ form button { justify-self: start; font-family: var(--sans); }
 @media (max-width: 600px) { form { grid-template-columns: 1fr; } }
 
 /* Footer */
-.site-footer { background: var(--ink); color: #b4aea6; padding: 88px 0 32px; font-size: .92rem; }
+.site-footer { background: var(--ink); color: #b4aea6; padding: 88px 0 20px; font-size: .92rem; }
 .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; }
 .site-footer .logo { color: #fff; display: block; margin-bottom: 1rem; }
 .site-footer h4 { color: var(--clay-light); font: 400 .95rem var(--sans); letter-spacing: .22em; text-transform: uppercase; margin-bottom: 1.2rem; }
 .site-footer ul { list-style: none; display: grid; gap: .5rem; }
 .site-footer a:hover { color: #fff; }
-.copy-line { border-top: 1px solid #33373a; margin-top: 56px; padding-top: 24px; font-size: .8rem; }
+.copy-line { border-top: 1px solid #33373a; margin-top: 14px; padding-top: 16px; font-size: .8rem; }
 @media (max-width: 800px) { .foot-grid { grid-template-columns: 1fr; } }
 
 .to-top { position: fixed; right: 20px; bottom: 20px; z-index: 40; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: #fff; font-size: 1.1rem; border: 1px solid rgba(255,255,255,.2); opacity: 0; pointer-events: none; transition: opacity .3s, background .3s; cursor: pointer; }
@@ -466,13 +466,13 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
 
 /* Giant footer wordmark loops right to left; it also speeds up with scroll via the shared marquee code.
    It is the one place with its own display face: Cinzel capitals, filled with a moving brass-to-cream sheen. */
-.mega { overflow: hidden; margin-top: 56px; padding: .15em 0; }
+.mega { overflow: hidden; margin-top: 12px; padding: 0; }
 .mega .mega-track { animation-duration: 38s; }
-.mega span { display: flex; align-items: center; flex: none; padding-right: .4em; font-family: "Cinzel", Georgia, serif; font-style: normal; font-weight: 400; font-size: clamp(2.2rem, 7.5vw, 7rem); line-height: 1.25; white-space: nowrap; letter-spacing: .1em;
+.mega span { display: flex; align-items: center; flex: none; padding: 0 .12em 0 0; font-family: "Cinzel", Georgia, serif; font-style: normal; font-weight: 400; font-size: clamp(2.2rem, 7.5vw, 7rem); line-height: 1.05; white-space: nowrap; letter-spacing: .1em;
   background: linear-gradient(100deg, #b98f45 0%, #d4a95e 25%, #f1e4c6 48%, #d4a95e 72%, #b98f45 100%) 0 0 / 220% 100%;
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
   animation: mega-sheen 7s linear infinite; }
-.mega span::after { content: "\2726"; margin-left: .45em; font-family: var(--serif); font-style: normal; font-size: .28em; -webkit-text-fill-color: var(--clay); color: var(--clay); }
+.mega span::after { content: "\2726"; margin-left: .3em; font-family: var(--serif); font-style: normal; font-size: .28em; -webkit-text-fill-color: var(--clay); color: var(--clay); }
 @keyframes mega-sheen { to { background-position: -220% 0; } }
 .mega:hover .mega-track { animation-play-state: paused; }
 

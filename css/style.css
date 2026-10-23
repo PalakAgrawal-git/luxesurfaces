@@ -450,10 +450,12 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
 @keyframes ripple { to { transform: scale(1); opacity: 0; } }
 
 
-/* Giant footer wordmark slides sideways as the page ends */
+/* Giant footer wordmark loops right to left; it also speeds up with scroll via the shared marquee code */
 .mega { overflow: hidden; margin-top: 64px; }
-.mega span { display: block; width: max-content; font-family: var(--serif); font-size: clamp(2.4rem, 11.6vw, 11.5rem); line-height: 1; white-space: nowrap; letter-spacing: .03em; color: transparent; -webkit-text-stroke: 1px rgba(227, 191, 174, .35); will-change: transform; transition: -webkit-text-stroke-color .4s, color .6s; }
-.mega:hover span { color: rgba(227, 191, 174, .08); -webkit-text-stroke-color: rgba(227, 191, 174, .8); }
+.mega .mega-track { animation-duration: 32s; }
+.mega span { display: block; flex: none; padding-right: .6em; font-family: var(--serif); font-size: clamp(2.8rem, 12vw, 11.5rem); line-height: 1.05; white-space: nowrap; letter-spacing: .03em; color: transparent; -webkit-text-stroke: 1px rgba(227, 191, 174, .4); transition: color .6s, -webkit-text-stroke-color .4s; }
+.mega:hover span { color: rgba(227, 191, 174, .1); -webkit-text-stroke-color: rgba(227, 191, 174, .85); }
+.mega:hover .mega-track { animation-play-state: paused; }
 
 /* Floating decoration on the team and project imagery */
 @keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }

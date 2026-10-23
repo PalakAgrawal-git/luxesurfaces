@@ -67,7 +67,7 @@ document.body.insertAdjacentHTML("beforeend", `
         </ul>
       </div>
     </div>
-    <div class="mega" aria-hidden="true"><span>LUXE SURFACES</span></div>
+    <div class="mega" aria-hidden="true"><div class="marquee-track mega-track"><span>LUXE SURFACES</span><span>LUXE SURFACES</span><span>LUXE SURFACES</span><span>LUXE SURFACES</span></div></div>
     <div class="copy-line">© ${new Date().getFullYear()} Luxe Surfaces LLP</div>
   </div>
 </footer>
@@ -336,7 +336,6 @@ if (!reduceMotion) {
 
   const header = document.querySelector(".site-header");
   const navEl = document.querySelector(".nav");
-  const mega = document.querySelector(".mega span");
   const strip = document.querySelectorAll(".brand-nav, .section-head");
   let lastScroll = scrollY, frame2 = false;
 
@@ -364,15 +363,6 @@ if (!reduceMotion) {
       lastScroll = y;
     }
     if (y < 120) header.classList.remove("hide");
-
-    // Footer wordmark glides in from the right and settles as the footer enters view
-    if (mega) {
-      const r = mega.parentElement.getBoundingClientRect();
-      if (r.top < vh && r.bottom > 0) {
-        const t = Math.min(Math.max(1 - (r.top - vh * 0.1) / (vh * 0.8), 0), 1); // 0 as it enters, 1 when settled
-        mega.style.transform = `translateX(${((1 - t) * 32).toFixed(2)}%)`;
-      }
-    }
   };
   const queue = () => { if (!frame2) { frame2 = true; requestAnimationFrame(update); } };
   addEventListener("scroll", queue, { passive: true });

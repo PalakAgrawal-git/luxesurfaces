@@ -179,8 +179,8 @@ section { padding: clamp(64px, 10vw, 128px) 0; }
 /* Clients strip */
 .clients { overflow: hidden; padding: 64px 0; background: var(--stone); }
 .clients .marquee-track { animation-duration: 36s; gap: 88px; align-items: center; }
-.clients .marquee-track { gap: 28px; }
-.clients img { background: #fff; border-radius: 3px; box-shadow: 0 8px 24px rgba(0, 0, 0, .35); }
+.clients .marquee-track { gap: 72px; }
+.clients img { background: transparent; border-radius: 0; box-shadow: none; mix-blend-mode: multiply; }
 @media (max-width: 600px) { .clients .marquee-track { gap: 16px; } }
 
 /* Team */
@@ -587,3 +587,9 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
 .soc-linkedin { background: #2d7fc7; -webkit-mask-image: url(../assets/icons/linkedin.svg); mask-image: url(../assets/icons/linkedin.svg); }
 .soc-youtube { background: #ff0000; -webkit-mask-image: url(../assets/icons/youtube.svg); mask-image: url(../assets/icons/youtube.svg); }
 @media (max-width: 800px) { .foot-orig { grid-template-columns: 1fr; gap: 36px; } .foot-left .logo { font-size: 1.45rem; } }
+
+
+/* Clients: ONE continuous white band across the full width. The logos are the untouched Drive files; each file's own
+   white background blends into the band (multiply), so there are no separate boxes and no dark gaps between logos. */
+.clients [data-clients] { background: #fff; padding: 30px 0; overflow: hidden; }
+@media (max-width: 600px) { .clients .marquee-track { gap: 40px; } .clients [data-clients] { padding: 22px 0; } }

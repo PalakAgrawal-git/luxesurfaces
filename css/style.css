@@ -35,11 +35,11 @@ section { padding: clamp(64px, 10vw, 128px) 0; }
 .logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; letter-spacing: .22em; color: #fff; transition: color .3s; }
 .site-header.solid { background: rgba(247, 244, 239, .94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
 .site-header.solid .logo, .site-header.solid .nav a, .site-header.solid .menu-btn { color: var(--ink); }
-.nav { display: flex; gap: 2.2rem; }
-.nav a { color: #fff; font-size: .82rem; font-weight: 400; letter-spacing: .06em; position: relative; padding: 4px 0; }
+.nav { display: flex; gap: 2.4rem; }
+.nav a { color: #fff; font-size: 1.05rem; font-weight: 400; letter-spacing: .04em; position: relative; padding: 4px 0; }
 .nav a::before { content: ""; position: absolute; left: 50%; bottom: -6px; width: 5px; height: 5px; border-radius: 50%; background: var(--clay); transform: translateX(-50%) scale(0); transition: transform .3s; }
 .nav a:hover::before, .nav a.active::before { transform: translateX(-50%) scale(1); }
-.menu-btn { display: none; background: none; border: 0; color: #fff; font: 400 .82rem var(--sans); letter-spacing: .06em; cursor: pointer; }
+.menu-btn { display: none; background: none; border: 0; color: #fff; font: 400 1.05rem var(--sans); letter-spacing: .06em; cursor: pointer; }
 .page-light .site-header { background: rgba(247, 244, 239, .94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
 .page-light .logo, .page-light .nav a, .page-light .menu-btn { color: var(--ink); }
 
@@ -47,7 +47,7 @@ section { padding: clamp(64px, 10vw, 128px) 0; }
   .menu-btn { display: block; }
   .nav { position: fixed; inset: 80px 0 auto; flex-direction: column; gap: 0; background: var(--ivory); max-height: 0; overflow: hidden; transition: max-height .4s; }
   .nav.open { max-height: 480px; box-shadow: 0 10px 30px rgba(0,0,0,.08); }
-  .nav a { color: var(--ink) !important; padding: 1rem 16px; border-top: 1px solid var(--line); }
+  .nav a { color: var(--ink) !important; padding: 1.1rem 16px; font-size: 1.2rem; border-top: 1px solid var(--line); }
   .nav a::before { display: none; }
 }
 
@@ -478,3 +478,10 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
   .section-head::after, .brand-nav::before { transform: none; transition: none; }
 }
 
+
+/* Mid-size screens: keep the larger menu on one line */
+@media (min-width: 901px) and (max-width: 1180px) {
+  .nav { gap: 1.5rem; }
+  .nav a { font-size: .98rem; letter-spacing: .02em; }
+  .logo { font-size: 1.25rem; letter-spacing: .16em; }
+}

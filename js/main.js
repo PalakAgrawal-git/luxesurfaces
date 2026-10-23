@@ -67,6 +67,7 @@ document.body.insertAdjacentHTML("beforeend", `
         </ul>
       </div>
     </div>
+    <div class="mega" aria-hidden="true"><span>LUXE SURFACES</span></div>
     <div class="copy-line">© ${new Date().getFullYear()} Luxe Surfaces LLP</div>
   </div>
 </footer>
@@ -95,10 +96,21 @@ btn.addEventListener("click", () => {
 });
 
 // Opening: the page fades up from dark, then the hero copy rises into place.
-document.body.insertAdjacentHTML("afterbegin", '<div class="curtain" aria-hidden="true"></div>');
+// The first page of a visit opens with the logo spelling itself out; later pages just fade up.
+let firstVisit = false;
+try {
+  firstVisit = !sessionStorage.getItem("luxe-intro") && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  sessionStorage.setItem("luxe-intro", "1");
+} catch (_) { /* storage blocked: skip the intro */ }
+const curtainLogo = firstVisit
+  ? `<div class="curtain-logo">${[..."LUXE SURFACES"].map((c, i) => `<span style="--i:${i}">${c === " " ? "&nbsp;" : c}</span>`).join("")}</div>`
+  : "";
+document.body.insertAdjacentHTML("afterbegin", `<div class="curtain" aria-hidden="true">${curtainLogo}</div>`);
 const reveal = () => document.documentElement.classList.add("loaded");
 // Lift the curtain once fonts are ready (or after 600ms at most), without waiting for every image.
-Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 600))]).then(() => setTimeout(reveal, 150));
+// On the first page the logo gets ~1.3s to finish writing itself before the curtain goes.
+Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 600))])
+  .then(() => setTimeout(reveal, firstVisit ? 1300 : 150));
 
 // Image panels unveil from a slight zoom; cards in a grid arrive one after another.
 document.querySelectorAll(".split .media, .img-card, .gallery figure, .legacy-img").forEach((el) => {
@@ -128,7 +140,7 @@ const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const hero = document.querySelector(".hero");
 const heroMedia = hero && hero.querySelector("video, img");
 const heroCopy = hero && hero.querySelector(".hero-inner");
-const driftImgs = [...document.querySelectorAll(".split .media img, .split .media video")];
+const driftImgs = [...document.querySelectorAll(".split .media img, .split .media video, .gallery figure img, .img-card img")];
 driftImgs.forEach((m) => { m.dataset.drift = ""; m.style.height = "115%"; });
 
 let ticking = false;
@@ -306,4 +318,140 @@ if (!reduceMotion) {
     setTimeout(() => { location.href = a.href; }, 420);
   });
   addEventListener("pageshow", (e) => { if (e.persisted) document.documentElement.classList.remove("leaving"); });
+}
+
+// ===== More motion, round two =====
+if (!reduceMotion) {
+  // Words light up as you read: paragraphs split into words whose opacity follows scroll position.
+  const wrapWords = (node, out) => {
+    [...node.childNodes].forEach((child) => {
+      if (child.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        child.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.append(" "); return; }
+          const w = document.createElement("span");
+          w.className = "sw";
+          w.textContent = part;
+          out.push(w);
+          frag.append(w);
+        });
+        child.replaceWith(frag);
+      } else if (child.nodeType === 1 && child.tagName !== "BR") {
+        wrapWords(child, out);
+      }
+    });
+  };
+  const scrubs = [...document.querySelectorAll(".lead p, .brand-body p, .legacy-cols p, .page-hero p, .section-head p, .split .copy p, .brand-hero p, .brand-intro p")]
+    .filter((p) => !p.closest(".hero, form"))
+    .map((p) => {
+      const label = p.innerText.replace(/\s+/g, " ").trim();
+      const words = [];
+      wrapWords(p, words);
+      p.setAttribute("aria-label", label);
+      words.forEach((w) => w.setAttribute("aria-hidden", "true"));
+      return { p, words };
+    });
+
+  const header = document.querySelector(".site-header");
+  const navEl = document.querySelector(".nav");
+  const mega = document.querySelector(".mega span");
+  const strip = document.querySelectorAll(".brand-nav, .section-head");
+  let lastScroll = scrollY, frame2 = false;
+
+  const update = () => {
+    frame2 = false;
+    const vh = innerHeight;
+
+    // Scrubbed word fill: starts when the paragraph's top reaches 88% of the viewport, ends at 32%.
+    scrubs.forEach(({ p, words }) => {
+      const r = p.getBoundingClientRect();
+      if (r.bottom < -50 || r.top > vh + 50) return;
+      const start = vh * 0.88, end = vh * 0.32;
+      const t = Math.min(Math.max((start - r.top) / (start - end), 0), 1);
+      const lit = t * (words.length + 5);
+      for (let i = 0; i < words.length; i++) {
+        words[i].style.opacity = (0.2 + 0.8 * Math.min(Math.max(lit - i, 0), 1)).toFixed(2);
+      }
+    });
+
+    // Header hides on the way down, returns on the way up (stays when the mobile menu is open).
+    const y = scrollY, dy = y - lastScroll;
+    if (Math.abs(dy) > 6) {
+      const menuOpen = navEl && navEl.classList.contains("open");
+      header.classList.toggle("hide", dy > 0 && y > 320 && !menuOpen);
+      lastScroll = y;
+    }
+    if (y < 120) header.classList.remove("hide");
+
+    // Footer wordmark glides in from the right and settles as the footer enters view
+    if (mega) {
+      const r = mega.parentElement.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) {
+        const t = Math.min(Math.max(1 - (r.top - vh * 0.1) / (vh * 0.8), 0), 1); // 0 as it enters, 1 when settled
+        mega.style.transform = `translateX(${((1 - t) * 32).toFixed(2)}%)`;
+      }
+    }
+  };
+  const queue = () => { if (!frame2) { frame2 = true; requestAnimationFrame(update); } };
+  addEventListener("scroll", queue, { passive: true });
+  addEventListener("resize", queue);
+  update();
+
+  // Rules draw when their section arrives
+  const ruleIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); ruleIO.unobserve(e.target); } });
+  }, { threshold: 0.4 });
+  strip.forEach((el) => ruleIO.observe(el));
+
+  // Click ripple on buttons and brand tiles
+  document.addEventListener("pointerdown", (e) => {
+    const host = e.target.closest(".btn, .brand");
+    if (!host) return;
+    const r = host.getBoundingClientRect();
+    const size = Math.max(r.width, r.height) * 2;
+    const dot = document.createElement("span");
+    dot.className = "ripple";
+    dot.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - r.left - size / 2}px;top:${e.clientY - r.top - size / 2}px`;
+    host.append(dot);
+    setTimeout(() => dot.remove(), 750);
+  });
+
+  if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    // Hero floats against the mouse (independent `translate`, so scroll drift is untouched)
+    const heroEl = document.querySelector(".hero");
+    const layer = heroEl && heroEl.querySelector("video, img");
+    const copy = heroEl && heroEl.querySelector(".hero-inner");
+    if (heroEl && layer) {
+      Object.assign(layer.style, { top: "-3%", left: "-3%", width: "106%", height: "106%" });
+      let mx = 0, my = 0, sx = 0, sy = 0;
+      heroEl.addEventListener("pointermove", (e) => {
+        const r = heroEl.getBoundingClientRect();
+        mx = (e.clientX - r.left) / r.width - 0.5;
+        my = (e.clientY - r.top) / r.height - 0.5;
+      });
+      heroEl.addEventListener("pointerleave", () => { mx = 0; my = 0; });
+      const float = () => {
+        sx += (mx - sx) * 0.06;
+        sy += (my - sy) * 0.06;
+        layer.style.translate = `${(-sx * 36).toFixed(1)}px ${(-sy * 24).toFixed(1)}px`;
+        copy.style.translate = `${(sx * 20).toFixed(1)}px ${(sy * 14).toFixed(1)}px`;
+        requestAnimationFrame(float);
+      };
+      float();
+    }
+
+    // Cursor labels
+    const dot = document.querySelector(".cursor");
+    if (dot) {
+      const text = document.createElement("span");
+      dot.append(text);
+      const labels = [[".img-card", "View"], [".brand", "Open"], [".person", "Meet"], [".split .media", "Look"], [".episode", "Play"], [".gallery figure", "Zoom"], [".clients img", "Client"]];
+      document.addEventListener("pointerover", (e) => {
+        const hit = labels.find(([sel]) => e.target.closest(sel));
+        dot.classList.toggle("label", !!hit);
+        if (hit) { text.textContent = hit[1]; dot.classList.remove("big"); }
+      });
+    }
+  }
 }

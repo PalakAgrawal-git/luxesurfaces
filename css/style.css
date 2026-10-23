@@ -334,7 +334,7 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
 .split .media.unveil.in img, .split .media.unveil.in video { clip-path: inset(0); }
 
 /* Hero stills slowly push in */
-@keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.12); } }
+@keyframes kenburns { from { scale: 1.02; } to { scale: 1.12; } }
 .hero > img { animation: kenburns 18s ease-out forwards; }
 
 /* Buttons: colour sweeps across on hover */
@@ -408,3 +408,83 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
   .eyebrow::before, .lead .eyebrow::after { width: 28px; }
   .cursor, .progress { display: none; }
 }
+
+/* ===== More motion, round two ===== */
+
+/* Logo intro inside the curtain */
+.curtain-logo { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: clamp(1.4rem, 5vw, 3rem); letter-spacing: .28em; color: var(--clay-light); padding-left: .28em; }
+.curtain-logo span { display: inline-block; opacity: 0; transform: translateY(60%) rotateX(80deg); animation: letter .8s var(--ease-out) forwards; animation-delay: calc(var(--i) * 60ms + 150ms); }
+@keyframes letter { to { opacity: 1; transform: none; } }
+.loaded .curtain-logo { opacity: 0; transform: translateY(-14px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
+
+/* Header slides away while reading down, returns on the way up */
+.site-header { transition: background .3s, box-shadow .3s, transform .45s var(--ease-out); }
+.site-header.hide { transform: translateY(-100%); }
+
+/* Words light up as you read (set by main.js) */
+.sw { opacity: .2; transition: opacity .15s linear; }
+.no-scrub .sw { opacity: 1; }
+
+/* Section rules draw across */
+.section-head::after { content: ""; flex-basis: 100%; height: 1px; background: var(--line); transform: scaleX(0); transform-origin: 0 50%; transition: transform 1.3s var(--ease-out) .3s; }
+.section-head.in::after { transform: none; }
+.brand-nav { border-top: 0; position: relative; }
+.brand-nav::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform: scaleX(0); transform-origin: 0 50%; transition: transform 1.3s var(--ease-out); }
+.brand-nav.in::before { transform: none; }
+
+/* Brand tiles pop in */
+.grid.reveal > .brand { transform: translateY(40px) scale(.92); }
+.grid.reveal.in > .brand { transform: none; }
+
+/* Counter-rotating scroll cue */
+@keyframes cue { 0% { transform: scaleY(0); transform-origin: 50% 0; } 45% { transform: scaleY(1); transform-origin: 50% 0; } 55% { transform: scaleY(1); transform-origin: 50% 100%; } 100% { transform: scaleY(0); transform-origin: 50% 100%; } }
+.scroll-cue::after { animation: cue 2.2s var(--ease) infinite; }
+
+/* Clients drift the other way */
+.clients .marquee-track { animation-direction: reverse; }
+.clients img { transition: transform .5s var(--ease-out), box-shadow .5s; }
+.clients img:hover { transform: translateY(-8px) scale(1.06); box-shadow: 0 18px 36px rgba(29, 32, 34, .14); }
+
+/* Hero layers can float with the mouse; they use the independent translate property so scroll drift keeps working */
+.hero video, .hero > img { will-change: transform, translate; }
+.hero-inner { will-change: transform, translate; }
+
+/* Click ripple */
+.ripple { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, .45); transform: scale(0); pointer-events: none; animation: ripple .7s var(--ease-out) forwards; }
+.brand .ripple { background: rgba(142, 47, 38, .18); }
+@keyframes ripple { to { transform: scale(1); opacity: 0; } }
+
+/* Cursor can carry a label */
+.cursor { display: grid; place-items: center; }
+.cursor span { font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: #fff; opacity: 0; transition: opacity .25s; white-space: nowrap; }
+.cursor.label { width: 84px; height: 84px; margin: -42px 0 0 -42px; opacity: .96; mix-blend-mode: normal; background: var(--clay); }
+.cursor.label span { opacity: 1; }
+
+/* Giant footer wordmark slides sideways as the page ends */
+.mega { overflow: hidden; margin-top: 64px; }
+.mega span { display: block; width: max-content; font-family: var(--serif); font-size: clamp(2.4rem, 11.6vw, 11.5rem); line-height: 1; white-space: nowrap; letter-spacing: .03em; color: transparent; -webkit-text-stroke: 1px rgba(227, 191, 174, .35); will-change: transform; transition: -webkit-text-stroke-color .4s, color .6s; }
+.mega:hover span { color: rgba(227, 191, 174, .08); -webkit-text-stroke-color: rgba(227, 191, 174, .8); }
+
+/* Floating decoration on the team and project imagery */
+@keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+.person.card:nth-child(odd) { animation: bob 5s ease-in-out infinite; }
+.person.card:nth-child(even) { animation: bob 6s ease-in-out -2s infinite; }
+.person.card:hover { animation-play-state: paused; }
+
+/* Gentle glow sweep over olive/green panels' headings */
+@keyframes sheen { to { background-position: -200% 0; } }
+.olive h2 .w > span, .legacy h2 .w > span { background: linear-gradient(100deg, #fff 40%, var(--clay-light) 50%, #fff 60%) 200% 0 / 200% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: sheen 5s linear 1.5s infinite; }
+
+/* Link underlines in running text and the footer */
+.site-footer li a, .brand-nav a { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .4s var(--ease-out), transform .3s var(--ease-out), color .3s; }
+.site-footer li a:hover, .brand-nav a:hover { background-size: 100% 1px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sw { opacity: 1; }
+  .curtain-logo, .scroll-cue::after, .person.card, .olive h2 .w > span, .legacy h2 .w > span { animation: none !important; }
+  .olive h2 .w > span, .legacy h2 .w > span { -webkit-text-fill-color: currentColor; background: none; }
+  .section-head::after, .brand-nav::before { transform: none; transition: none; }
+}
+
+/* Touch devices never show the cursor follower (placed last so it wins over the label styles above) */
+@media (hover: none), (pointer: coarse) { .cursor { display: none !important; } }

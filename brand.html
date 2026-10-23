@@ -7,13 +7,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Scope+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20">
+  <link rel="stylesheet" href="css/style.css?v=21">
 </head>
 <body class="page-light">
 
 <main id="brand"></main>
 
-<script src="js/brands-data.js?v=20"></script>
+<script src="js/brands-data.js?v=21"></script>
 <script>
   const IMG = "https://static.wixstatic.com/media/";
   const slug = new URLSearchParams(location.search).get("b");
@@ -35,7 +35,7 @@
 
     <section class="brand-gallery">
       <div class="wrap gallery">
-        ${b.images.map((f, n) => `<figure class="g${n}"><img src="${IMG + f}" alt="${b.name} surface ${n + 1}"></figure>`).join("")}
+        ${b.images.map((f, n) => `<figure><img src="${f.startsWith("assets/") ? f : IMG + f}" alt="${b.name} surface ${n + 1}"></figure>`).join("")}
       </div>
     </section>
 
@@ -53,6 +53,6 @@
       <a href="brand.html?b=${next.slug}" style="text-align:right"><small>Next</small>${next.name}</a>
     </nav>`;
 </script>
-<script src="js/main.js?v=20"></script>
+<script src="js/main.js?v=21"></script>
 </body>
 </html>

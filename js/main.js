@@ -1,5 +1,4 @@
 // Shared header, footer and interactions for every page.
-const W = "https://static.wixstatic.com/media/";
 
 const NAV = [
   ["index.html", "Home"],
@@ -19,13 +18,13 @@ const SOCIAL = [
 ];
 
 const CLIENT_LOGOS = [
-  "027a73_aaa569d231ae40ee9d564ccc8384f855~mv2.png",
-  "027a73_542f34439838447daf7dd7c11232be0d~mv2.png",
-  "027a73_ee212b745671443a9eef6b9db26e8833~mv2.png",
-  "027a73_af751057e72845e4896e0cba1489c016~mv2.png",
-  "027a73_91f3c2e9d73e4202bf9bdf78d1770a13~mv2.png",
-  "027a73_046d95492b494aec98351aa624269061~mv2.png",
-  "027a73_43b45379a1874d11b4d5c3dbb1109f57~mv2.png",
+  "assets/clients/wadhwa.jpg",
+  "assets/clients/adani.png",
+  "assets/clients/ferrari.jpg",
+  "assets/clients/ashwin-sheth.jpg",
+  "assets/clients/balaji-world.jpg",
+  "assets/clients/dy-patil.jpg",
+  "assets/clients/porsche.jpg",
 ];
 
 const here = location.pathname.split("/").pop() || "index.html";
@@ -42,7 +41,7 @@ document.body.insertAdjacentHTML("afterbegin", `
 </header>`);
 
 document.querySelectorAll("[data-clients]").forEach((el) => {
-  const imgs = CLIENT_LOGOS.map((f) => `<img src="${W + f}" alt="Client logo" loading="lazy">`).join("");
+  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}" alt="Client logo" loading="lazy">`).join("");
   el.innerHTML = `<div class="marquee-track">${imgs}${imgs}</div>`;
 });
 
@@ -52,6 +51,7 @@ document.body.insertAdjacentHTML("beforeend", `
     <div class="foot-grid">
       <div>
         <span class="logo">LUXE SURFACES</span>
+        <img class="venture" src="assets/brand/venture-logos.png" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
         <p>LUXE SURFACES LLP<br>First Floor, Haji Moosa Patrawala Ind. Estate, Kishav Ravkhadhi Rd 20, Dr E Moses Road, Kishav Ravkhadhi Rd, opposite VFS, Mahalakshmi, Mumbai, Maharashtra 400011</p>
       </div>
       <div>
@@ -406,3 +406,28 @@ if (!reduceMotion) {
     }
   }
 }
+
+
+// Cards with data-slides cycle through extra photos with a crossfade (Adani lobby views).
+document.querySelectorAll("[data-slides]").forEach((card) => {
+  const first = card.querySelector("img");
+  const srcs = [first.getAttribute("src"), ...card.dataset.slides.split(",")];
+  const layers = srcs.map((src, i) => {
+    if (i === 0) return first;
+    const img = first.cloneNode();
+    img.src = src;
+    img.alt = "";
+    img.className = "slide";
+    img.loading = "lazy";
+    first.after(img);
+    return img;
+  });
+  first.classList.add("slide", "on");
+  let i = 0;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  setInterval(() => {
+    layers[i].classList.remove("on");
+    i = (i + 1) % layers.length;
+    layers[i].classList.add("on");
+  }, 3200);
+});

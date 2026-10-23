@@ -1,5 +1,5 @@
 // Brand content copied from the original luxesurfaces.in brand pages (/items/...).
-// Images are the ones each original page shows, served from Wix.
+// Images are the ones each original page shows (served from Wix) unless the path starts with assets/, which are from the Drive folder.
 const BRANDS = [
   {
     slug: "eterni",
@@ -12,12 +12,12 @@ const BRANDS = [
       "With a commitment to quality and innovation, Eterni curates collections that fuse materials, textures, and finishes to transform surfaces into statements of elegance. Every piece is designed not just to adorn a space, but to elevate it—making it unique, enduring, and unforgettable.",
       "At Eterni, we believe mosaics are more than surfaces; they are experiences in stone, glass, and ceramic that embody the essence of timeless artistry.",
     ],
-    images: ["027a73_ad4639594a1e4e81abea72c4f7014a73~mv2.png", "027a73_f28369e15aa84d5da730c5ec6f399fa8~mv2.png", "027a73_612fe96eea05426aa4763066f328fae8~mv2.png", "027a73_b016d7cda6ab4f67b9697e1d030ec881~mv2.png"],
+    images: ["assets/eterni/bathroom.jpg", "027a73_f28369e15aa84d5da730c5ec6f399fa8~mv2.png", "027a73_612fe96eea05426aa4763066f328fae8~mv2.png", "027a73_b016d7cda6ab4f67b9697e1d030ec881~mv2.png"],
   },
   {
     slug: "fiandre",
     name: "Fiandre",
-    logo: "assets/brands/fiandre.jpg",
+    logo: "assets/brands/fiandre.png",
     intro: "Part of Iris Ceramica Group, Fiandre is a leader in innovative, sustainable, high-performance ceramic surfaces, combining advanced technology and environmental responsibility for authentic, distinctive spaces globally.",
     body: [
       "Fiandre is part of Iris Ceramica Group, an international entity that has always innovated with sustainability in mind. For over sixty years, we have created evolved ceramic material, combining aesthetics, performance, and environmental respect. Our surfaces are designed to support architects and international brands in creating authentic, expressive, and distinctive spaces. Thanks to a tailored approach and consolidated technical excellence, every Fiandre solution becomes material in service of design. Fiandre develops cutting-edge ceramic surfaces that unite aesthetic research, advanced technology, and environmental responsibility.With a wide range of formats, finishes, and thicknesses – from large Maximum slabs to more traditional formats – we offer versatile solutions for residential, retail, corporate, contract, wellness, ho.re.ca., and care spaces. Each collection is designed to enhance project identity through material.",
@@ -27,7 +27,7 @@ const BRANDS = [
   {
     slug: "ariostea",
     name: "Ariostea",
-    logo: "assets/brands/ariostea.jpg",
+    logo: "assets/brands/ariostea.png",
     intro: "Founded in 1961 and part of the Iris Ceramica Group, Ariostea is recognized for technological innovation and environmental commitment, creating eco-sustainable, high-quality solutions by harmonizing Italian technology with the uniqueness of nature.",
     body: [
       "Founded in 1961 in Emilia-Romagna, the beating heart of the international ceramic industry, Ariostea represents one of the excellences of the Iris Ceramica Group. Standing out for technological innovation and a significant environmental commitment, Ariostea aims to surpass the intrinsic beauty of natural materials, offering sustainable and high-quality solutions that meet contemporary design and functionality needs.",
@@ -39,7 +39,7 @@ const BRANDS = [
   {
     slug: "emil-ceramica",
     name: "Emil Ceramica",
-    logo: "assets/brands/emil.jpg",
+    logo: "assets/brands/emil.png",
     intro: "An Italian group with five commercial brands (Emilceramica, Ergon, Provenza, Viva, Level). It designs, manufactures, and distributes over 6,500 ceramic items worldwide, prioritizing process innovation, R&D, and global logistics.",
     body: [
       "From its headquarters in Italy, it designs, develops, manufactures and distributes ceramic tiles for five commercial brands: Emilceramica, Ergon, Provenza, Viva and Level.Emilgroup owns production plants in Italy with a capacity of over 9 million square meters per year. It produces more than 6,500 items that are distributed worldwide through sales offices and warehouses located in Italy, United States, Russia, Germany, India and Hong Kong.",
@@ -51,12 +51,12 @@ const BRANDS = [
   {
     slug: "versace",
     name: "Versace",
-    logo: "assets/brands/versace.jpg",
+    logo: "assets/brands/versace.png",
     intro: "The luxury ceramic and porcelain division of the Versace fashion house, established in partnership with Gardenia Orchidea. It brings the brand's iconic motifs (Medusa, Greca) into interiors. Recognized for luxury appeal, high quality, and prestige.",
     body: [
       "Versace Ceramics is the luxury ceramic and porcelain division of the world-renowned Versace fashion house, created in partnership with the Italian manufacturer Gardenia Orchidea (part of ABK Group). Established in 1997, it brings the brand’s iconic motifs—like the Medusa head, the Greca border, and Barocco patterns—into the world of interiors through tiles, large slabs, bathroom furnishings, and accessories. All products are Made in Italy, combining advanced ceramic technology with bold, fashion-inspired design. Collections such as Manifesto and Icons feature large-format slabs with metallic glazes and wallpaper-like effects, while marble-look and textured surfaces add versatility for both residential and hospitality projects. Versace Ceramics is recognized for its luxury appeal, high quality, and prestige, but it also comes with higher costs, longer lead times, and requires expert installation—making it ideal for high-end, statement-driven spaces.",
     ],
-    images: ["027a73_e0ce5ba635c24f428d2c05da09f708d9~mv2.png", "027a73_22585a7fabfb4fe88c79c67496217635~mv2.png", "027a73_cbaaba9a8f0546f1a4eacbdc8261ba03~mv2.png", "027a73_c0814badeab24b5997a7a9e8d921e99e~mv2.png"],
+    images: ["assets/versace/lounge.png", "assets/versace/bar.jpg", "assets/versace/bathroom.jpg", "assets/versace/panels.png", "assets/versace/yellow-panels.jpg", "assets/versace/basin.jpg", "assets/versace/dining.png", "assets/versace/marble-bar.jpg"],
   },
   {
     slug: "flaviker",
@@ -84,7 +84,7 @@ const BRANDS = [
   {
     slug: "porcelanosa",
     name: "Porcelanosa",
-    logo: "assets/brands/porcelanosa.jpg",
+    logo: "assets/brands/porcelanosa.png",
     intro: "A major international reference built on innovation and quality. Starting with ceramic tiles, its eight brands now offer a vast product range from kitchen and bathroom equipment to high-tech materials, with over 970 stores globally.",
     body: [
       "PORCELANOSA Group is today a major reference in both the Spanish and the International market. Its consolidated position has been built up on values such as innovation and quality, but specially the trust placed in its large human capital, made up of almost 5000 skilled professionals, and its concern for its stakeholders and the environment. Diversifying production has played a key role in the growth of a business group that started off manufacturing a single product: ceramic tiles. Today, the Group’s seven brands offer a vast selection of products ranging from kitchen and bathroom equipment to high-tech materials and state-of-the-art building solutions for contemporary architecture. PORCELANOSA Group is one of the most important ceramics manufacturers in the world, offering furniture, kitchen and bath items, with over 970 stores in 150 countries. Production diversification has played a key role in the growth of a business group that started off with the production of a single product: ceramic tiles. Today, the Group’s eight companies offer a wide product range that includes kitchen and bathroom equipment as well as state-of-the-art building solutions for contemporary architecture.",
@@ -94,7 +94,7 @@ const BRANDS = [
   {
     slug: "sant-agostino",
     name: "Sant'Agostino",
-    logo: "assets/brands/santagostino.jpg",
+    logo: "assets/brands/santagostino.png",
     intro: "With over fifty years of history, this international company preserves its values while projecting towards the future. It focuses on consistent stylistic and technological research to ensure the highest quality materials with high aesthetic and technical performance.",
     subhead: "The value of an identity wrapped up in more than 50 years of history",
     body: [
@@ -105,7 +105,7 @@ const BRANDS = [
   {
     slug: "delconca",
     name: "Delconca",
-    logo: "assets/brands/delconca.jpg",
+    logo: "assets/brands/delconca.png",
     intro: "Ceramica del Conca S.p.a., founded in 1979. A pioneer in glazed single-fired white body stoneware and porcelain stoneware technology. It focuses on aesthetic and technological innovation, backed by a modern Logistics Centre for customer service.",
     body: [
       "The aesthetic and technological innovation of Del Conca's ceramic surfaces offers the possibility of creating custom-made spaces according to a shared aesthetic that aims to stand out. Ceramica del Conca S.p.a. was founded in 1979, based on experience in the construction sector in Italy and abroad. At the time, it was new to the world of ceramic tiles but had a great interest in technological development and design and was aligned with growing market expectations. It was one of the first companies in the ceramic tile industry to believe in glazed single-fired white body stoneware, and at times of general technical uncertainty, it was also one of the first to adopt the porcelain stoneware technology, making brave and valid production choices. Following major investments in recent years, the company can now satisfy all the aesthetic, quality and design requirements with its modern product lines. The strategy of commercial expansion sees the Del Conca Group increasingly engaged in specific marketing initiatives for individual markets. With the aim of increasing customer loyalty, we set up the Del Conca Logistics Centre which, thanks to the use of the most advanced technologies, collects the materials of the various establishments in a single site, guaranteeing punctual and precise customer service, also overseas.",
@@ -115,7 +115,7 @@ const BRANDS = [
   {
     slug: "panaria",
     name: "Panaria",
-    logo: "assets/brands/panaria.jpg",
+    logo: "assets/brands/panaria.png",
     intro: "An expression of the Panariagroup Industrie Ceramiche S.p.A. ceramic tradition. It produces high-quality porcelain stoneware for flooring and cladding, focusing on inspiring emotion and creating the perfect home with contemporary, quality products.",
     body: [
       "Panaria is an expression of the great ceramic tradition of Panariagroup Industrie Ceramiche S.p.A., an Italian multinational group and world leader in the manufacture and distribution of ceramic surfaces for flooring and cladding.",
@@ -127,7 +127,7 @@ const BRANDS = [
   {
     slug: "natucer",
     name: "Natucer",
-    logo: "assets/brands/natucer.jpg",
+    logo: "assets/brands/natucer.png",
     intro: "Founded in 1988, specializing in high added-value extruded ceramics. Known for pioneering rapid firing in extrusion and constant innovation with technical solutions like NaturTech and NaturLed, and receiving four Alfa de Oro awards.",
     body: [
       "Founded in 1988 at the height of the technological revolution in the ceramic sector, the company had a clear objective: to adapt rapid firing to the demanding extrusion process. In a context where the production of an extruded tile could take up to 24 hours, the company decided to incorporate single-layer kilns—until then uncommon in this process—and to develop a new clay formulation, which made it possible to drastically reduce manufacturing times.",
@@ -140,7 +140,7 @@ const BRANDS = [
   {
     slug: "inalco",
     name: "Inalco",
-    logo: "assets/brands/inalco.jpg",
+    logo: "assets/brands/inalco.png",
     intro: "A pioneering company in MDi surface creation that leads through sustainable innovation and design excellence. We develop high-value solutions that blend technology with fashion trends, delivering exclusive, emotionally resonant products. Our mission is to drive industry change by creating differentiated solutions that provide maximum value to our partners while maintaining our commitment to sustainability and excellence.",
     body: [
       "Is all about sustainable innovation, creativity, elegance, excellence, exclusivity and emotion. A company specializing in the creation of MDi surfaces with high added value. Our mission is to provoke change through global leadership in innovation, creating new solutions and technological and fashion trends to conquer the future, generating the greatest differentiation and maximum added value for our partners. Through sustainable innovation, we strive for excellence every day. Our mission is to provoke change through global leadership in innovation, creating new solutions and technological and fashion trends to conquer the future, generating the greatest differentiation and maximum added value for our partners. Through sustainable innovation, we strive for excellence every day.",
@@ -150,7 +150,7 @@ const BRANDS = [
   {
     slug: "tecnografica",
     name: "Tecnografica",
-    logo: "assets/brands/tecnografica.jpg",
+    logo: "assets/brands/tecnografica.png",
     intro: "Tecnografica is an Italian design brand that transforms walls into immersive works of art. Founded in 1992 in Italy’s ceramic district of Castellarano, the brand is renowned for its high-end decorative surfaces that combine bold artistic expression, refined textures, and ultra-high-definition printing. With a strong focus on customization, Tecnografica empowers architects and designers to create distinctive interiors that are elegant, expressive, and unmistakably contemporary.",
     body: [
       "Tecnografica is a pioneering Italian design brand that redefines interior surfaces by transforming walls into immersive visual experiences. Established in 1992 in Castellarano, at the heart of Italy’s prestigious ceramic district, the brand began as a graphic design studio and has since evolved into an international reference for luxury decorative surfaces.",

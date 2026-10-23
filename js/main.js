@@ -113,8 +113,8 @@ if (firstVisit) {
   // The logo gets ~1.3s to finish writing itself before the curtain lifts.
   Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 600))]).then(() => setTimeout(reveal, 1300));
 } else {
-  // Moving between pages: no dark screen, the hero copy simply starts rising straight away.
-  setTimeout(reveal, 40);
+  // Moving between pages: no dark screen; the hero copy starts rising as the page wipe reaches the top.
+  setTimeout(reveal, 320);
 }
 
 // Image panels unveil from a slight zoom; cards in a grid arrive one after another.

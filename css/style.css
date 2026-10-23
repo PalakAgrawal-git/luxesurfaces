@@ -391,14 +391,20 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
 .progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--clay); transform: scaleX(0); transform-origin: 0 50%; z-index: 120; pointer-events: none; }
 
 
-/* Page to page: native crossfade (Chrome/Edge/Safari), header stays put. Older browsers just switch instantly. */
+/* Page to page: the new page wipes up from the bottom while the old one drifts up and dims.
+   The old page stays visible until it is covered, so there is never a blank frame.
+   Native cross-document view transitions (Chrome/Edge/Safari); older browsers switch instantly. */
 @view-transition { navigation: auto; }
 .site-header { view-transition-name: site-header; }
-::view-transition-old(root) { animation: .28s var(--ease) both vt-out; }
-::view-transition-new(root) { animation: .38s var(--ease) both vt-in; }
-@keyframes vt-out { to { opacity: 0; } }
-@keyframes vt-in { from { opacity: 0; } }
-::view-transition-group(site-header) { animation-duration: .38s; }
+::view-transition-group(root) { animation-duration: .75s; }
+::view-transition-old(root) { animation: .75s cubic-bezier(.65, 0, .35, 1) both vt-out; }
+::view-transition-new(root) { animation: .75s cubic-bezier(.65, 0, .35, 1) both vt-in; }
+@keyframes vt-out { to { transform: translateY(-9vh) scale(.97); filter: brightness(.55); } }
+@keyframes vt-in { from { clip-path: inset(100% 0 0 0); transform: translateY(5vh); } to { clip-path: inset(0 0 0 0); transform: none; } }
+::view-transition-group(site-header) { animation-duration: .4s; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
 
 /* Footer links nudge */
 .site-footer li a { display: inline-block; transition: transform .3s var(--ease-out), color .3s; }

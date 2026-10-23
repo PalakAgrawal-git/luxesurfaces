@@ -41,7 +41,7 @@ document.body.insertAdjacentHTML("afterbegin", `
 </header>`);
 
 document.querySelectorAll("[data-clients]").forEach((el) => {
-  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=41" alt="Client logo" loading="lazy">`).join("");
+  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=42" alt="Client logo" loading="lazy">`).join("");
   el.innerHTML = `<div class="marquee-track">${imgs}${imgs}</div>`;
 });
 
@@ -51,7 +51,7 @@ document.body.insertAdjacentHTML("beforeend", `
     <div class="foot-grid">
       <div>
         <span class="logo">LUXE SURFACES</span>
-        <img class="venture" src="assets/brand/venture-logos.png?v=41" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
+        <img class="venture" src="assets/brand/venture-logos.png?v=42" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
         <p>LUXE SURFACES LLP<br>First Floor, Haji Moosa Patrawala Ind. Estate, Kishav Ravkhadhi Rd 20, Dr E Moses Road, Kishav Ravkhadhi Rd, opposite VFS, Mahalakshmi, Mumbai, Maharashtra 400011</p>
       </div>
       <div>
@@ -330,7 +330,7 @@ if (!reduceMotion) {
   const header = document.querySelector(".site-header");
   const navEl = document.querySelector(".nav");
   const strip = document.querySelectorAll(".brand-nav, .section-head");
-  let lastScroll = scrollY, frame2 = false;
+  let frame2 = false;
 
   const update = () => {
     frame2 = false;
@@ -348,14 +348,7 @@ if (!reduceMotion) {
       }
     });
 
-    // Header hides on the way down, returns on the way up (stays when the mobile menu is open).
-    const y = scrollY, dy = y - lastScroll;
-    if (Math.abs(dy) > 6) {
-      const menuOpen = navEl && navEl.classList.contains("open");
-      header.classList.toggle("hide", dy > 0 && y > 320 && !menuOpen);
-      lastScroll = y;
-    }
-    if (y < 120) header.classList.remove("hide");
+    // The header is sticky: it always stays visible at the top while scrolling.
   };
   const queue = () => { if (!frame2) { frame2 = true; requestAnimationFrame(update); } };
   addEventListener("scroll", queue, { passive: true });

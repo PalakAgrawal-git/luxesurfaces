@@ -427,9 +427,8 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
 @keyframes letter { to { opacity: 1; transform: none; } }
 .loaded .curtain-logo { opacity: 0; transform: translateY(-14px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
 
-/* Header slides away while reading down, returns on the way up */
+/* Header is sticky (position: fixed) and never hides */
 .site-header { transition: background .3s, box-shadow .3s, transform .45s var(--ease-out); }
-.site-header.hide { transform: translateY(-100%); }
 
 /* Words light up as you read (set by main.js) */
 .sw { opacity: .2; transition: opacity .15s linear; }

@@ -466,11 +466,11 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
 
 
 /* Giant footer wordmark loops right to left; it also speeds up with scroll via the shared marquee code.
-   It is the one place with its own display face: Bodoni Moda italic, filled with a moving brass-to-cream sheen. */
-.mega { overflow: hidden; margin-top: 64px; padding: .1em 0; }
+   It is the one place with its own display face: Cinzel capitals, filled with a moving brass-to-cream sheen. */
+.mega { overflow: hidden; margin-top: 56px; padding: .15em 0; }
 .mega .mega-track { animation-duration: 38s; }
-.mega span { display: flex; align-items: center; flex: none; padding-right: .35em; font-family: "Bodoni Moda", Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(3.4rem, 14vw, 13rem); line-height: 1.12; white-space: nowrap; letter-spacing: 0;
-  background: linear-gradient(100deg, #a77f3a 0%, #d4a95e 22%, #f6efe2 45%, #d4a95e 68%, #a77f3a 100%) 0 0 / 220% 100%;
+.mega span { display: flex; align-items: center; flex: none; padding-right: .4em; font-family: "Cinzel", Georgia, serif; font-style: normal; font-weight: 600; font-size: clamp(2.2rem, 7.5vw, 7rem); line-height: 1.25; white-space: nowrap; letter-spacing: .1em;
+  background: linear-gradient(100deg, #b98f45 0%, #d4a95e 25%, #f1e4c6 48%, #d4a95e 72%, #b98f45 100%) 0 0 / 220% 100%;
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
   animation: mega-sheen 7s linear infinite; }
 .mega span::after { content: "\2726"; margin-left: .45em; font-family: var(--serif); font-style: normal; font-size: .28em; -webkit-text-fill-color: var(--clay); color: var(--clay); }

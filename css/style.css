@@ -567,3 +567,23 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
 .brand-logo[src*="tecnografica"] { object-view-box: inset(38.80% 0.00% 38.80% 0.00%); aspect-ratio: 4.4643; width: 312px; height: auto; max-width: none; max-height: none; }
 
 .site-footer .venture { object-view-box: inset(0.00% 0.00% 0.00% 2.31%); aspect-ratio: 1.3088; width: 190px; height: auto; }
+
+/* Footer: same arrangement as the original site. Left: logo lockup, name, phone and email.
+   Right: the address, then the social icons in their brand colours. */
+.foot-orig { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.foot-left .venture { display: block; margin: 0 0 20px; }
+.foot-left .logo { display: block; font-size: 1.7rem; letter-spacing: .2em; margin-bottom: 22px; }
+.foot-contact { display: flex; flex-wrap: wrap; gap: 10px 32px; }
+.foot-contact a { color: #cfc7ba; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+.foot-contact a:hover { color: #fff; }
+.foot-right p { line-height: 1.95; margin: 0 0 24px; }
+.socials { display: flex; flex-wrap: wrap; gap: 20px; }
+.soc { display: block; width: 30px; height: 30px; background: #fff; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; transition: transform .3s var(--ease-out); }
+.soc:hover { transform: translateY(-4px) scale(1.14); }
+.soc-whatsapp { background: #25d366; -webkit-mask-image: url(../assets/icons/whatsapp.svg); mask-image: url(../assets/icons/whatsapp.svg); }
+.soc-instagram { background: #e4405f; -webkit-mask-image: url(../assets/icons/instagram.svg); mask-image: url(../assets/icons/instagram.svg); }
+.soc-facebook { background: #1877f2; -webkit-mask-image: url(../assets/icons/facebook.svg); mask-image: url(../assets/icons/facebook.svg); }
+.soc-x { background: #ffffff; -webkit-mask-image: url(../assets/icons/x.svg); mask-image: url(../assets/icons/x.svg); }
+.soc-linkedin { background: #2d7fc7; -webkit-mask-image: url(../assets/icons/linkedin.svg); mask-image: url(../assets/icons/linkedin.svg); }
+.soc-youtube { background: #ff0000; -webkit-mask-image: url(../assets/icons/youtube.svg); mask-image: url(../assets/icons/youtube.svg); }
+@media (max-width: 800px) { .foot-orig { grid-template-columns: 1fr; gap: 36px; } .foot-left .logo { font-size: 1.45rem; } }

@@ -10,11 +10,12 @@ const NAV = [
 ];
 
 const SOCIAL = [
-  ["https://www.instagram.com/luxe.surfaces/", "Instagram"],
-  ["https://www.facebook.com/people/Luxe-Surfaces/61552494302374/", "Facebook"],
-  ["https://x.com/LlpLuxe14735", "X"],
-  ["https://www.linkedin.com/company/luxesurfaces/", "LinkedIn"],
-  ["https://www.youtube.com/@luxe.surfaces", "YouTube"],
+  ["https://wa.me/918657030761", "WhatsApp", "whatsapp"],
+  ["https://www.instagram.com/luxe.surfaces/", "Instagram", "instagram"],
+  ["https://www.facebook.com/people/Luxe-Surfaces/61552494302374/", "Facebook", "facebook"],
+  ["https://x.com/LlpLuxe14735", "X", "x"],
+  ["https://www.linkedin.com/company/luxesurfaces/", "LinkedIn", "linkedin"],
+  ["https://www.youtube.com/@luxe.surfaces", "YouTube", "youtube"],
 ];
 
 const CLIENT_LOGOS = [
@@ -41,34 +42,29 @@ document.body.insertAdjacentHTML("afterbegin", `
 </header>`);
 
 document.querySelectorAll("[data-clients]").forEach((el) => {
-  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=45" alt="Client logo" loading="lazy">`).join("");
+  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=47" alt="Client logo" loading="lazy">`).join("");
   el.innerHTML = `<div class="marquee-track">${imgs}${imgs}</div>`;
 });
 
 document.body.insertAdjacentHTML("beforeend", `
 <footer class="site-footer">
   <div class="wrap">
-    <div class="foot-grid">
-      <div>
+    <div class="foot-orig">
+      <div class="foot-left">
+        <img class="venture" src="assets/brand/venture-logos.png?v=47" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
         <span class="logo">LUXE SURFACES</span>
-        <img class="venture" src="assets/brand/venture-logos.png?v=45" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
+        <div class="foot-contact">
+          <a href="tel:+918657030761">+91 86570 30761</a>
+          <a href="mailto:info@luxesurfaces.in">info@luxesurfaces.in</a>
+        </div>
+      </div>
+      <div class="foot-right">
         <p>LUXE SURFACES LLP<br>First Floor, Haji Moosa Patrawala Ind. Estate, Kishav Ravkhadhi Rd 20, Dr E Moses Road, Kishav Ravkhadhi Rd, opposite VFS, Mahalakshmi, Mumbai, Maharashtra 400011</p>
-      </div>
-      <div>
-        <h4>Explore</h4>
-        <ul>${NAV.map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join("")}</ul>
-      </div>
-      <div>
-        <h4>Connect</h4>
-        <ul>
-          <li><a href="tel:+918657030761">+91 86570 30761</a></li>
-          <li><a href="mailto:info@luxesurfaces.in">info@luxesurfaces.in</a></li>
-          ${SOCIAL.map(([h, t]) => `<li><a href="${h}" target="_blank" rel="noopener">${t}</a></li>`).join("")}
-        </ul>
+        <div class="socials">${SOCIAL.map(([h, t, ic]) => `<a href="${h}" target="_blank" rel="noopener" aria-label="${t}" class="soc soc-${ic}"></a>`).join("")}</div>
       </div>
     </div>
   </div>
-<div class="mega" aria-hidden="true"><div class="marquee-track mega-track"><span>LUXE SURFACES</span><span>LUXE SURFACES</span><span>LUXE SURFACES</span><span>LUXE SURFACES</span></div></div>
+  <div class="mega" aria-hidden="true"><div class="marquee-track mega-track"><span>LUXE SURFACES</span><span>LUXE SURFACES</span><span>LUXE SURFACES</span><span>LUXE SURFACES</span></div></div>
   <div class="wrap">
   <div class="copy-line">© ${new Date().getFullYear()} Luxe Surfaces LLP</div>
   </div>

@@ -42,7 +42,7 @@ document.body.insertAdjacentHTML("afterbegin", `
 </header>`);
 
 document.querySelectorAll("[data-clients]").forEach((el) => {
-  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=49" alt="Client logo" loading="lazy">`).join("");
+  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=51" alt="Client logo" loading="lazy">`).join("");
   el.innerHTML = `<div class="marquee-track">${imgs}${imgs}</div>`;
 });
 
@@ -51,7 +51,7 @@ document.body.insertAdjacentHTML("beforeend", `
   <div class="wrap">
     <div class="foot-orig">
       <div class="foot-left">
-        <img class="venture" src="assets/brand/venture-logos.png?v=49" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
+        <img class="venture" src="assets/brand/venture-logos.png?v=51" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
         <span class="logo">LUXE SURFACES</span>
         <div class="foot-contact">
           <a href="tel:+918657030761">+91 86570 30761</a>

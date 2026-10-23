@@ -593,3 +593,24 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
    white background blends into the band (multiply), so there are no separate boxes and no dark gaps between logos. */
 .clients [data-clients] { background: #fff; padding: 30px 0; overflow: hidden; }
 @media (max-width: 600px) { .clients .marquee-track { gap: 40px; } .clients [data-clients] { padding: 22px 0; } }
+
+/* ===== Phone polish: thumb-sized tap targets, readable small text, shorter map ===== */
+@media (max-width: 800px) {
+  .menu-btn { min-height: 44px; min-width: 56px; padding: 10px 6px; }
+  .foot-contact { gap: 0 28px; }
+  .foot-contact a { display: inline-flex; align-items: center; min-height: 44px; }
+  .socials { gap: 4px; margin-left: -6px; }
+  .soc { width: 46px; height: 46px; -webkit-mask-size: 30px; mask-size: 30px; }
+  .brand-hero .back { display: inline-flex; align-items: center; min-height: 44px; margin-bottom: 1rem; }
+  .site-footer .logo { padding: 2px 0; }
+}
+@media (max-width: 600px) {
+  #brands .brand span { font-size: .76rem; letter-spacing: .06em; }
+  #brands .brand small { font-size: .8rem; }
+  .brand-nav small { font-size: .8rem; }
+  .brand-nav a { display: block; min-height: 64px; }
+  .copy-line { font-size: .82rem; }
+  iframe[title="Map"] { height: 300px !important; }
+  .card .more { font-size: .85rem; }
+}
+@media (max-width: 800px) { .site-header .logo { display: inline-flex; align-items: center; min-height: 44px; } }

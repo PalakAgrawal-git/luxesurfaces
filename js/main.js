@@ -41,7 +41,7 @@ document.body.insertAdjacentHTML("afterbegin", `
 </header>`);
 
 document.querySelectorAll("[data-clients]").forEach((el) => {
-  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=43" alt="Client logo" loading="lazy">`).join("");
+  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=45" alt="Client logo" loading="lazy">`).join("");
   el.innerHTML = `<div class="marquee-track">${imgs}${imgs}</div>`;
 });
 
@@ -51,7 +51,7 @@ document.body.insertAdjacentHTML("beforeend", `
     <div class="foot-grid">
       <div>
         <span class="logo">LUXE SURFACES</span>
-        <img class="venture" src="assets/brand/venture-logos.png?v=43" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
+        <img class="venture" src="assets/brand/venture-logos.png?v=45" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
         <p>LUXE SURFACES LLP<br>First Floor, Haji Moosa Patrawala Ind. Estate, Kishav Ravkhadhi Rd 20, Dr E Moses Road, Kishav Ravkhadhi Rd, opposite VFS, Mahalakshmi, Mumbai, Maharashtra 400011</p>
       </div>
       <div>
@@ -67,8 +67,10 @@ document.body.insertAdjacentHTML("beforeend", `
         </ul>
       </div>
     </div>
-    <div class="mega" aria-hidden="true"><div class="marquee-track mega-track"><span>LUXE SURFACES</span><span>LUXE SURFACES</span><span>LUXE SURFACES</span><span>LUXE SURFACES</span></div></div>
-    <div class="copy-line">© ${new Date().getFullYear()} Luxe Surfaces LLP</div>
+  </div>
+<div class="mega" aria-hidden="true"><div class="marquee-track mega-track"><span>LUXE SURFACES</span><span>LUXE SURFACES</span><span>LUXE SURFACES</span><span>LUXE SURFACES</span></div></div>
+  <div class="wrap">
+  <div class="copy-line">© ${new Date().getFullYear()} Luxe Surfaces LLP</div>
   </div>
 </footer>
 <a class="wa" href="https://wa.me/918657030761" target="_blank" rel="noopener" aria-label="WhatsApp">

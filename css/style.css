@@ -180,8 +180,8 @@ section { padding: clamp(64px, 10vw, 128px) 0; }
 .clients { overflow: hidden; padding: 64px 0; background: var(--stone); }
 .clients .marquee-track { animation-duration: 36s; gap: 88px; align-items: center; }
 .clients .marquee-track { gap: 96px; }
-.clients img { height: 110px; width: auto; max-width: 260px; object-fit: contain; }
-@media (max-width: 600px) { .clients img { height: 76px; max-width: 190px; } .clients .marquee-track { gap: 56px; } }
+.clients img { width: auto; max-width: none; object-fit: contain; }
+@media (max-width: 600px) { .clients .marquee-track { gap: 56px; zoom: .68; } }
 
 /* Team */
 /* Portraits are full-length on a blue backdrop, so keep the top edge (heads) and show the whole figure. */
@@ -367,8 +367,8 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
 .card:hover .num { transform: translateX(8px); }
 .card .more { transition: letter-spacing .4s var(--ease-out); }
 .card:hover .more { letter-spacing: .12em; }
-.person img { filter: grayscale(.85); transition: filter .6s, transform .4s var(--ease); }
-.person:hover img { filter: none; transform: scale(1.03); }
+.person img { transition: transform .4s var(--ease); }
+.person:hover img { transform: scale(1.03); }
 
 /* Episodes slide in and highlight on hover */
 .episode { transition: padding-left .4s var(--ease-out), background .4s; }
@@ -527,5 +527,20 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
   #brands .brand h3 { font-size: 1.6rem; }
 }
 
-/* Client logos keep their true colours; a faint light halo keeps the darker ones readable on the dark page */
-.clients img { filter: drop-shadow(0 0 7px rgba(243, 236, 224, .14)); }
+
+
+/* Clients: the logos are shown exactly as supplied (untouched files). The strip is a white band so each file's own
+   white background disappears into it and the colours are identical to the originals. */
+.clients { background: #fff; }
+.clients .eyebrow { color: #8a6420; }
+.clients img { mix-blend-mode: multiply; filter: none; }
+
+/* Each client file has different empty margins around the real logo, so size each file individually.
+   The files are untouched; this only changes how large they are drawn so the logos look evenly sized. */
+.clients img[src*="wadhwa"]       { width: 300px; height: 70px; object-fit: cover; object-position: 50% 50%; } /* shows the middle band of the file, where the logo is */
+.clients img[src*="adani"]        { height: 84px; }
+.clients img[src*="ferrari"]      { height: 126px; }
+.clients img[src*="ashwin-sheth"] { height: 120px; }
+.clients img[src*="balaji-world"] { height: 80px; }
+.clients img[src*="dy-patil"]     { height: 132px; }
+.clients img[src*="porsche"]      { height: 114px; }

@@ -41,7 +41,7 @@ document.body.insertAdjacentHTML("afterbegin", `
 </header>`);
 
 document.querySelectorAll("[data-clients]").forEach((el) => {
-  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=30" alt="Client logo" loading="lazy">`).join("");
+  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=33" alt="Client logo" loading="lazy">`).join("");
   el.innerHTML = `<div class="marquee-track">${imgs}${imgs}</div>`;
 });
 
@@ -51,7 +51,7 @@ document.body.insertAdjacentHTML("beforeend", `
     <div class="foot-grid">
       <div>
         <span class="logo">LUXE SURFACES</span>
-        <img class="venture" src="assets/brand/venture-logos.png?v=30" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
+        <img class="venture" src="assets/brand/venture-logos.png?v=33" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
         <p>LUXE SURFACES LLP<br>First Floor, Haji Moosa Patrawala Ind. Estate, Kishav Ravkhadhi Rd 20, Dr E Moses Road, Kishav Ravkhadhi Rd, opposite VFS, Mahalakshmi, Mumbai, Maharashtra 400011</p>
       </div>
       <div>

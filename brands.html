@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Scope+One&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=48">
+  <link rel="stylesheet" href="css/style.css?v=49">
 </head>
 <body class="page-light">
 
@@ -57,16 +57,16 @@
   </div>
 </section>
 
-<script src="js/brands-data.js?v=48"></script>
+<script src="js/brands-data.js?v=49"></script>
 <script>
   // Flaviker and Porcelaingres have no logo in the Drive folder, so they show the name only.
   document.getElementById("brands").innerHTML = BRANDS.map((b) => `
     <a class="brand" href="brand.html?b=${b.slug}">
-      ${b.logo ? `<img src="${b.logo}?v=48" alt="${b.name} logo" loading="lazy">` : `<h3>${b.name}</h3>`}
+      ${b.logo ? `<img src="${b.logo}?v=49" alt="${b.name} logo" loading="lazy">` : `<h3>${b.name}</h3>`}
       <span>${b.name}</span>
       <small>Learn More</small>
     </a>`).join("");
 </script>
-<script src="js/main.js?v=48"></script>
+<script src="js/main.js?v=49"></script>
 </body>
 </html>

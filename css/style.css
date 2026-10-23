@@ -526,3 +526,6 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
   .brand-nav a { font-size: 1.5rem; }
   #brands .brand h3 { font-size: 1.6rem; }
 }
+
+/* Client logos keep their true colours; a faint light halo keeps the darker ones readable on the dark page */
+.clients img { filter: drop-shadow(0 0 7px rgba(243, 236, 224, .14)); }

@@ -286,25 +286,6 @@ if (!reduceMotion) {
       });
       b.addEventListener("pointerleave", () => { b.style.translate = ""; });
     });
-
-    // Cursor follower
-    const dot = document.createElement("div");
-    dot.className = "cursor";
-    document.body.append(dot);
-    let cx = 0, cy = 0, tx = 0, ty = 0;
-    addEventListener("pointermove", (e) => { tx = e.clientX; ty = e.clientY; dot.classList.add("on"); });
-    document.addEventListener("pointerleave", () => dot.classList.remove("on"));
-    const follow = () => {
-      cx += (tx - cx) * 0.2;
-      cy += (ty - cy) * 0.2;
-      dot.style.transform = `translate(${cx}px, ${cy}px)`;
-      requestAnimationFrame(follow);
-    };
-    follow();
-    document.querySelectorAll("a, button, .btn, input, textarea").forEach((el) => {
-      el.addEventListener("pointerenter", () => dot.classList.add("big"));
-      el.addEventListener("pointerleave", () => dot.classList.remove("big"));
-    });
   }
 
   // Page transitions: the curtain closes before leaving, and opens again if the page is restored from cache
@@ -439,19 +420,6 @@ if (!reduceMotion) {
         requestAnimationFrame(float);
       };
       float();
-    }
-
-    // Cursor labels
-    const dot = document.querySelector(".cursor");
-    if (dot) {
-      const text = document.createElement("span");
-      dot.append(text);
-      const labels = [[".img-card", "View"], [".brand", "Open"], [".person", "Meet"], [".split .media", "Look"], [".episode", "Play"], [".gallery figure", "Zoom"], [".clients img", "Client"]];
-      document.addEventListener("pointerover", (e) => {
-        const hit = labels.find(([sel]) => e.target.closest(sel));
-        dot.classList.toggle("label", !!hit);
-        if (hit) { text.textContent = hit[1]; dot.classList.remove("big"); }
-      });
     }
   }
 }

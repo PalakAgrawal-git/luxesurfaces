@@ -389,11 +389,6 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
 /* Scroll progress */
 .progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--clay); transform: scaleX(0); transform-origin: 0 50%; z-index: 120; pointer-events: none; }
 
-/* Soft cursor follower (fine pointers only) */
-.cursor { position: fixed; top: 0; left: 0; z-index: 130; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--clay); pointer-events: none; opacity: 0; mix-blend-mode: multiply; transition: width .3s var(--ease-out), height .3s var(--ease-out), margin .3s var(--ease-out), opacity .3s, background .3s; }
-.cursor.on { opacity: .9; }
-.cursor.big { width: 56px; height: 56px; margin: -28px 0 0 -28px; opacity: .25; }
-@media (hover: none), (pointer: coarse) { .cursor { display: none; } }
 
 /* Leaving a page: curtain closes */
 .leaving .curtain { opacity: 1; transition: opacity .4s var(--ease); }
@@ -406,7 +401,7 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
   .split-words .w > span, .unveil img, .unveil video, .reveal > .episode, .legacy-cols.reveal > p, form.reveal > *, .copy.reveal > * { transform: none !important; clip-path: none !important; opacity: 1 !important; transition: none !important; }
   .hero > img, .wa { animation: none; }
   .eyebrow::before, .lead .eyebrow::after { width: 28px; }
-  .cursor, .progress { display: none; }
+  .progress { display: none; }
 }
 
 /* ===== More motion, round two ===== */
@@ -454,11 +449,6 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
 .brand .ripple { background: rgba(142, 47, 38, .18); }
 @keyframes ripple { to { transform: scale(1); opacity: 0; } }
 
-/* Cursor can carry a label */
-.cursor { display: grid; place-items: center; }
-.cursor span { font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: #fff; opacity: 0; transition: opacity .25s; white-space: nowrap; }
-.cursor.label { width: 84px; height: 84px; margin: -42px 0 0 -42px; opacity: .96; mix-blend-mode: normal; background: var(--clay); }
-.cursor.label span { opacity: 1; }
 
 /* Giant footer wordmark slides sideways as the page ends */
 .mega { overflow: hidden; margin-top: 64px; }
@@ -486,5 +476,3 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
   .section-head::after, .brand-nav::before { transform: none; transition: none; }
 }
 
-/* Touch devices never show the cursor follower (placed last so it wins over the label styles above) */
-@media (hover: none), (pointer: coarse) { .cursor { display: none !important; } }

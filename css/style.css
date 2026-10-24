@@ -975,3 +975,11 @@ a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(
 .card img { border-radius: 14px; }
 .card.person img { border-radius: 14px; }
 .grid:has(> .card), .grid:has(> .brand) { gap: 20px; border: 0; background: none; }
+
+/* Team cards: photo runs edge to edge across the top, no white margin around it */
+.card.person { padding: 0; overflow: hidden; }
+.card.person img { display: block; width: 100%; border-radius: 0; margin: 0; }
+.card.person h3, .card.person p { padding-left: 24px; padding-right: 24px; }
+.card.person h3 { margin-top: 20px; }
+.card.person p { padding-bottom: 28px; }
+.card.person, .card.person img { border-top-left-radius: 20px; border-top-right-radius: 20px; }

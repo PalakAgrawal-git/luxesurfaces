@@ -851,3 +851,17 @@ a.img-card { cursor: pointer; }
 .olive .btn:hover, .hero .btn:hover { border-color: var(--beige); }
 .copy-line { border-top-color: rgba(26, 26, 26, .18); color: #4a4a4a; }
 .episode .num { font-size: 1.5rem; font-weight: 600; }
+
+/* Brand guide: Cormorant Garamond for headings, Montserrat for body */
+:root { --head: "Cormorant Garamond", Georgia, serif; }
+h1, h2, h3, h4, .serif, .card .num, .episode .num, .episode .t, .brand-nav a, .legacy-stats .big { font-family: var(--head); font-weight: 600; letter-spacing: 0; line-height: 1.12; }
+h1 { font-size: clamp(2.3rem, 4.6vw, 3.1rem); }
+h2 { font-size: clamp(2rem, 3.8vw, 2.5rem); }
+h3 { font-size: 1.5rem; }
+.episode .num { font-size: 1.9rem; }
+
+/* Brand guide: TT Commons Pro primary (Montserrat is the web fallback), Cormorant Garamond secondary */
+:root { --sans: "TT Commons Pro", "Montserrat", sans-serif; --serif: var(--head); --madefor-d: var(--sans); --madefor-t: var(--sans); }
+body, p, li, a, button, input, textarea, select, small, .btn, .nav a, .menu-btn, .eyebrow, .site-footer, .site-footer *, .marquee span, .brand span, .foot-contact a, .copy-line { font-family: var(--sans); }
+h1, h2, h3, h4, .serif, .logo, .curtain-logo, .card .num, .episode .num, .episode .t, .brand-nav a, .legacy-stats .big { font-family: var(--head); }
+.site-footer .logo { font-family: var(--head); }

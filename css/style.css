@@ -893,7 +893,3 @@ h1, h2, h3, h4, .serif, .logo, .curtain-logo, .card .num, .episode .num, .episod
 /* Client logos: multiply against the track's own ivory so the logo whites vanish into the page colour */
 .clients .marquee-track { mix-blend-mode: normal; background: var(--ivory); isolation: isolate; }
 .clients .marquee-track img { mix-blend-mode: multiply; }
-
-/* Footer lockup: its white background takes the footer colour */
-.site-footer { isolation: isolate; }
-.site-footer .venture { background: transparent; border: 0; border-radius: 0; mix-blend-mode: darken; }

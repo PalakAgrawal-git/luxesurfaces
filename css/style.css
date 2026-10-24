@@ -578,7 +578,7 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
 
 /* Clients: ONE continuous white band across the full width. The logos are the untouched Drive files; each file's own
    white background blends into the band (multiply), so there are no separate boxes and no dark gaps between logos. */
-.clients [data-clients] { background: #fff; padding: 30px 0; overflow: hidden; }
+.clients [data-clients] { background: transparent; padding: 30px 0; overflow: hidden; }
 @media (max-width: 600px) { .clients .marquee-track { gap: 40px; } .clients [data-clients] { padding: 22px 0; } }
 
 /* ===== Phone polish: thumb-sized tap targets, readable small text, shorter map ===== */
@@ -670,7 +670,7 @@ h3 { font-size: 1.5rem; }
 
 /* clients: original shows the logos plainly on the page */
 .clients { background: var(--ivory); }
-.clients [data-clients] { background: #fff; border-block: 1px solid var(--line); }
+.clients [data-clients] { background: transparent; border: 0; }
 
 /* forms */
 input, textarea { background: #fff; border: 1px solid #c9c9c9; color: var(--text); }
@@ -702,3 +702,7 @@ label { font-size: .8rem; font-weight: 600; letter-spacing: .06em; }
 /* brands without a logo file show their name once, as the tile title */
 .brand.nologo span { display: none; }
 .brand.nologo h3 { font-size: 1.5rem; }
+
+/* Clients: no separate background at all. The logo files stay untouched; multiply lets each file's white blend into the page colour. */
+.clients, .clients [data-clients] { background: var(--ivory); border: 0; }
+.clients img { background: transparent; box-shadow: none; mix-blend-mode: multiply; }

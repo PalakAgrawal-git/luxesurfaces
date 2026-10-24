@@ -42,7 +42,7 @@ document.body.insertAdjacentHTML("afterbegin", `
 </header>`);
 
 document.querySelectorAll("[data-clients]").forEach((el) => {
-  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=68" alt="Client logo" loading="lazy">`).join("");
+  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=69" alt="Client logo" loading="lazy">`).join("");
   el.innerHTML = `<div class="marquee-track">${imgs}${imgs}</div>`;
 });
 
@@ -51,7 +51,7 @@ document.body.insertAdjacentHTML("beforeend", `
   <div class="wrap">
     <div class="foot-orig">
       <div class="foot-left">
-        <img class="venture" src="assets/brand/venture-logos.png?v=68" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
+        <img class="venture" src="assets/brand/venture-logos.png?v=69" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
         <span class="logo">LUXE SURFACES</span>
         <div class="foot-contact">
           <a href="tel:+918657030761">+91 86570 30761</a>
@@ -263,7 +263,7 @@ if (!reduceMotion) {
   const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
   if (finePointer) {
     // Tilt on cards, tiles and project cards
-    document.querySelectorAll(".card:not(.person), .brand, .img-card").forEach((el) => {
+    document.querySelectorAll(".brand, .img-card").forEach((el) => {
       el.classList.add("tilt");
       el.addEventListener("pointermove", (e) => {
         const r = el.getBoundingClientRect();

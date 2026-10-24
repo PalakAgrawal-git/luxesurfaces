@@ -894,3 +894,7 @@ h1, h2, h3, h4, .serif, .logo, .curtain-logo, .card .num, .episode .num, .episod
 .clients .marquee-track { mix-blend-mode: normal; background: var(--ivory); isolation: isolate; }
 .clients .marquee-track img { mix-blend-mode: multiply; }
 .clients .marquee-track img { filter: url(#lx-white); }
+
+/* Client logos are transparent PNGs now: no blending tricks needed */
+.clients, .clients [data-clients], .clients .marquee-track { mix-blend-mode: normal; }
+.clients .marquee-track img { mix-blend-mode: normal; filter: none; }

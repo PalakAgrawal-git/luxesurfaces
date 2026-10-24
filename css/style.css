@@ -1075,7 +1075,7 @@ body { background: var(--porcelain); min-height: 100vh; }
 ::-webkit-scrollbar, ::-webkit-scrollbar-track { background: var(--beige); }
 
 /* Contact: form and address panels split exactly in the middle, under the centred heading */
-.contact-split { grid-template-columns: 1fr 1fr; }
+.contact-split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .contact-split .copy { padding-left: max(24px, calc((100vw - 1240px) / 2)); padding-right: 48px; }
 .contact-split .copy.olive { padding-left: 48px; padding-right: max(24px, calc((100vw - 1240px) / 2)); }
 @media (max-width: 800px) { .contact-split { grid-template-columns: 1fr; } .contact-split .copy, .contact-split .copy.olive { padding-left: 20px; padding-right: 20px; } }

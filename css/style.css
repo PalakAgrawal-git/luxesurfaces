@@ -1080,12 +1080,3 @@ body { background: var(--porcelain); min-height: 100vh; }
 .contact-split .copy.olive { padding-left: 48px; padding-right: max(24px, calc((100vw - 1240px) / 2)); }
 @media (max-width: 800px) { .contact-split { grid-template-columns: 1fr; } .contact-split .copy, .contact-split .copy.olive { padding-left: 20px; padding-right: 20px; } }
 .page-hero .eyebrow { display: inline-block; }
-
-/* Portrait (9:16) video: shown at its true ratio and centred, never zoomed to fill a wide panel */
-.portrait-media { display: flex; align-items: center; justify-content: center; padding: clamp(24px, 4vw, 56px) 0; }
-.portrait-media video { width: auto; height: auto; max-width: min(100%, 440px); max-height: 86svh; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 16px; }
-@media (max-width: 800px) { .portrait-media video { max-width: min(86%, 360px); } }
-.portrait-media video { width: min(100%, 440px, calc(86svh * 9 / 16)); height: auto; max-width: none; max-height: none; aspect-ratio: 9 / 16; object-fit: contain; }
-@media (max-width: 800px) { .portrait-media video { width: min(86%, 360px, calc(80svh * 9 / 16)); max-width: none; } }
-.split .media.portrait-media video { width: min(100%, 440px, calc(86svh * 9 / 16)); height: auto; max-width: none; max-height: none; aspect-ratio: 9 / 16; object-fit: contain; border-radius: 16px; transform: none; }
-@media (max-width: 800px) { .split .media.portrait-media video { width: min(86%, 360px, calc(80svh * 9 / 16)); } }

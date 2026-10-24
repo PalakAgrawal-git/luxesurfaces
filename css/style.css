@@ -879,3 +879,13 @@ h1, h2, h3, h4, .serif, .logo, .curtain-logo, .card .num, .episode .num, .episod
 .episode .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease-out); }
 .episode:hover .thumb img { transform: scale(1.06); }
 @media (max-width: 700px) { .episode { grid-template-columns: 36px 1fr; } .episode .thumb { grid-column: 1 / -1; grid-row: 2; } .episode .t { grid-column: 2; grid-row: 1; } .episode .btn { grid-column: 1 / -1; grid-row: 3; justify-self: start; } }
+
+/* Rounded photo corners (logos and icons stay square) */
+:root { --img-r: 14px; }
+.card img, .split .media img, .split .media video, .legacy-img, .gallery figure, .gallery figure img, .img-card, .img-card img, .person img, .hero-photo, .brand-gallery img, .episode .thumb { border-radius: var(--img-r); }
+.card img { border-radius: 10px; }
+.split .media { overflow: hidden; border-radius: 0 var(--img-r) var(--img-r) 0; }
+.split.rev .media { border-radius: var(--img-r) 0 0 var(--img-r); }
+.img-card { overflow: hidden; }
+.img-card .label { border-radius: 0 0 var(--img-r) var(--img-r); }
+@media (max-width: 800px) { .split .media, .split.rev .media { border-radius: var(--img-r); } }

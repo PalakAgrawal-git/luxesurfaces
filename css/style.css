@@ -1001,3 +1001,12 @@ a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(
 .person.card, .card.person { background: var(--navy); }
 .person.card:hover, .card.person:hover { background: #24428a; }
 .person.card p, .card.person p { color: var(--porcelain); }
+
+/* Brands tab: navy hero and name strip, navy underline on tiles */
+.navy-hero { background: var(--navy); }
+.navy-hero h1, .navy-hero p { color: var(--porcelain); }
+.navy-hero .eyebrow { color: var(--beige); }
+.navy-hero + .marquee { background: var(--navy); border-color: var(--navy); }
+.navy-hero + .marquee span { color: var(--beige); }
+.brand span { color: var(--navy); }
+.brand:hover { box-shadow: inset 0 -4px 0 var(--navy), 0 14px 30px rgba(28, 54, 112, .12); }

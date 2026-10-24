@@ -911,3 +911,7 @@ html { scrollbar-width: none; }
 
 /* Client strip sits on Architectural Beige */
 .clients, .clients [data-clients], .clients .marquee-track { background: #cfc5b4; }
+
+/* Client strip: Porcelain White from the brand guide (replaces the beige) */
+.clients, .clients [data-clients], .clients .marquee-track { background: var(--porcelain); }
+.clients { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }

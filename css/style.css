@@ -1117,3 +1117,9 @@ body { background: var(--porcelain); min-height: 100vh; }
 .split:has(> .media.fit-video) > .copy p { margin-left: auto; margin-right: auto; max-width: 34ch; }
 .split:has(> .media.fit-video) > .copy .eyebrow { justify-content: center; }
 @media (max-width: 800px) { .split:has(> .media.fit-video) > .copy { padding: 40px 20px; display: flex; flex-direction: column; justify-content: center; } }
+
+/* Journey video shown uncropped: the panel has exactly the video's 720:1224 shape */
+@media (min-width: 801px) {
+  .split .media.fit-video { width: calc(min(100svh, 760px) * 0.5882); height: 100%; }
+  .split .media.fit-video video { width: 100%; height: 100%; object-fit: contain; aspect-ratio: auto; }
+}

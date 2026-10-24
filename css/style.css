@@ -1044,3 +1044,8 @@ a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(
 /* Soft shade at the foot of the banner so the white text always reads, whatever is in the video */
 .hero:not(.brands-hero)::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, .62) 0%, rgba(0, 0, 0, .3) 38%, rgba(0, 0, 0, 0) 68%); z-index: 0; pointer-events: none; }
 .hero .hero-inner h1, .hero .hero-inner p { text-shadow: 0 1px 16px rgba(0, 0, 0, .4); }
+
+/* Brand and project pages: photos and their write-up sit close together */
+.brand-gallery { padding-top: 0; padding-bottom: 0; }
+.brand-gallery + section { padding-top: 48px; padding-bottom: clamp(48px, 7vw, 88px); }
+@media (max-width: 800px) { .brand-gallery + section { padding-top: 32px; } }

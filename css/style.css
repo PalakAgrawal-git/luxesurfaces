@@ -893,3 +893,4 @@ h1, h2, h3, h4, .serif, .logo, .curtain-logo, .card .num, .episode .num, .episod
 /* Client logos: multiply against the track's own ivory so the logo whites vanish into the page colour */
 .clients .marquee-track { mix-blend-mode: normal; background: var(--ivory); isolation: isolate; }
 .clients .marquee-track img { mix-blend-mode: multiply; }
+.clients .marquee-track img { filter: url(#lx-white); }

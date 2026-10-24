@@ -1017,3 +1017,7 @@ a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(
 .brands-hero .hero-inner { position: relative; z-index: 1; }
 .brands-hero h1, .brands-hero p { color: var(--porcelain); }
 .brands-hero h1, .brands-hero p, .brands-hero .eyebrow, .podcast-hero h1, .podcast-hero p { text-shadow: 0 1px 14px rgba(0, 0, 0, .45); }
+
+/* Podcast "about" video has text baked into the frame: show the whole frame, never crop it */
+.podcast-about .media { background: #fff; display: flex; align-items: center; }
+.podcast-about .media video { object-fit: contain; width: 100%; height: auto; max-height: 100%; background: #fff; }

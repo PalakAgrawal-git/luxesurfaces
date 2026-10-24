@@ -1123,3 +1123,9 @@ body { background: var(--porcelain); min-height: 100vh; }
   .split .media.fit-video { width: calc(min(100svh, 760px) * 0.5882); height: 100%; }
   .split .media.fit-video video { width: 100%; height: 100%; object-fit: contain; aspect-ratio: auto; }
 }
+
+/* Phones and narrow windows: whole video, never cropped */
+@media (max-width: 800px) {
+  .split .media.fit-video { width: 100%; height: auto; }
+  .split .media.fit-video video { width: 100%; height: auto; max-height: none; aspect-ratio: 720 / 1224; object-fit: contain; }
+}

@@ -8,13 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&family=Wix+Madefor+Display:wght@400;500&family=Wix+Madefor+Text:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=132">
+  <link rel="stylesheet" href="css/style.css?v=133">
 </head>
 <body class="page-light">
 
 <main id="project"></main>
 
-<script src="js/projects-data.js?v=132"></script>
+<script src="js/projects-data.js?v=133"></script>
 <script>
   const slug = new URLSearchParams(location.search).get("p");
   const i = Math.max(0, PROJECTS.findIndex((p) => p.slug === slug));
@@ -58,6 +58,6 @@
       <a href="project.html?p=${next.slug}" style="text-align:right"><small>Next</small>${next.title}</a>
     </nav>`;
 </script>
-<script src="js/main.js?v=132"></script>
+<script src="js/main.js?v=133"></script>
 </body>
 </html>

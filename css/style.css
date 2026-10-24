@@ -1145,3 +1145,5 @@ body { background: var(--porcelain); min-height: 100vh; }
   html, body { overflow-x: hidden; }
   .section-head h2 { font-size: clamp(1.7rem, 7vw, 2.2rem); }
 }
+/* Brands banner is a photo now: same soft foot shade as the other banners so the text reads */
+.brands-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, .62) 0%, rgba(0, 0, 0, .3) 38%, rgba(0, 0, 0, 0) 68%); z-index: 0; pointer-events: none; }

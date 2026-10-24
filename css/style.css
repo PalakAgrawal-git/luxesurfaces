@@ -889,3 +889,7 @@ h1, h2, h3, h4, .serif, .logo, .curtain-logo, .card .num, .episode .num, .episod
 .img-card { overflow: hidden; }
 .img-card .label { border-radius: 0 0 var(--img-r) var(--img-r); }
 @media (max-width: 800px) { .split .media, .split.rev .media { border-radius: var(--img-r); } }
+
+/* Client logos: multiply against the track's own ivory so the logo whites vanish into the page colour */
+.clients .marquee-track { mix-blend-mode: normal; background: var(--ivory); isolation: isolate; }
+.clients .marquee-track img { mix-blend-mode: multiply; }

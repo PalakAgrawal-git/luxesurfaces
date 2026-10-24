@@ -989,3 +989,4 @@ a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(
 .img-card.logo-card .label { background: linear-gradient(to top, rgba(28, 54, 112, .92) 0%, rgba(28, 54, 112, .6) 60%, rgba(28, 54, 112, 0) 100%); }
 .img-card.logo-card .label h3, .img-card.logo-card .label small, .img-card.logo-card:hover .label small { color: var(--porcelain); }
 .proj-logo { background: var(--beige); border-radius: var(--img-r); }
+.wa { background: #25d366; }

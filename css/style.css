@@ -1012,7 +1012,7 @@ a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(
 .brand:hover { box-shadow: inset 0 -4px 0 var(--navy), 0 14px 30px rgba(28, 54, 112, .12); }
 
 /* Brands hero: the video from the original site, under a light navy tint */
-.brands-hero { height: 78svh; min-height: 520px; }
+.brands-hero, .podcast-hero { height: 100svh; min-height: 560px; }
 .brands-hero::after { content: none; }
 .brands-hero .hero-inner { position: relative; z-index: 1; }
 .brands-hero h1, .brands-hero p { color: var(--porcelain); }
@@ -1021,3 +1021,5 @@ a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(
 /* Podcast "about" video has text baked into the frame: show the whole frame, never crop it */
 .podcast-about .media { background: #fff; display: flex; align-items: center; }
 .podcast-about .media video { object-fit: contain; width: 100%; height: auto; max-height: 100%; background: #fff; }
+/* Keeps the white menu readable over bright video without tinting the picture */
+.brands-hero::before, .podcast-hero::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 130px; background: linear-gradient(to bottom, rgba(0, 0, 0, .38), rgba(0, 0, 0, 0)); z-index: 1; pointer-events: none; }

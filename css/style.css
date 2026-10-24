@@ -1,15 +1,16 @@
 :root {
   color-scheme: light;
-  --ivory: #f8f8f8;      /* page background, as on the original site */
-  --stone: #f1f1f1;      /* very light alternate sections */
-  --ink: #1a1a1a;        /* text colour on the original */
-  --slate: #1c3670;      /* brand navy (from the logo) for the few dark panels */
-  --fg: #f8f8f8;         /* light text on navy / photos */
+  --ivory: #f6f0e3;      /* page: warm cream with a faint golden tint (not white) */
+  --stone: #e6edf7;      /* soft pale blue for alternate sections and the footer */
+  --ink: #1a1a1a;
+  --slate: #1c3670;      /* logo navy for panels and buttons */
+  --fg: #f8f8f8;
   --text: #1a1a1a;
-  --muted: #5f5f5f;
-  --clay: #d35b27;       /* brand orange (from the logo) */
-  --clay-light: #f0a37a;
-  --line: #dedede;
+  --muted: #5a5a55;
+  --clay: #8a6612;       /* deep gold: used for gold TEXT (readable on cream) */
+  --gold: #c39a2b;       /* bright gold: lines, borders, hover details */
+  --clay-light: #e6c36a; /* light gold for use on navy */
+  --line: #d9d3c2;       /* warm hairline */
   --serif: "Montserrat", Arial, sans-serif;
   --sans: "Montserrat", Arial, sans-serif;
   --madefor-d: "Wix Madefor Display", "Montserrat", Arial, sans-serif;
@@ -706,3 +707,77 @@ label { font-size: .8rem; font-weight: 600; letter-spacing: .06em; }
 /* Clients: no separate background at all. The logo files stay untouched; multiply lets each file's white blend into the page colour. */
 .clients, .clients [data-clients] { background: var(--ivory); border: 0; }
 .clients img { background: transparent; box-shadow: none; mix-blend-mode: multiply; }
+
+
+/* =====================================================================
+   BLUE + GOLD from the logo, kept subtle: cream page, pale-blue sections, navy panels/buttons, gold details
+   ===================================================================== */
+body { background: var(--ivory); }
+::selection { background: var(--clay-light); color: var(--slate); }
+
+/* header */
+.site-header.solid, .page-light .site-header { background: rgba(246, 240, 227, .95); box-shadow: 0 1px 0 var(--line), 0 2px 0 rgba(184, 137, 31, .18); }
+@media (max-width: 900px) { .nav { background: var(--ivory); } }
+
+/* page titles sit on a soft blue-to-cream wash instead of flat white */
+.page-hero { background: linear-gradient(180deg, var(--stone) 0%, var(--ivory) 100%); }
+.section-head::after { background: linear-gradient(90deg, var(--clay) 0, rgba(184, 137, 31, .25) 28%, var(--line) 60%); }
+.brand-nav::before { background: linear-gradient(90deg, var(--clay), var(--line) 40%); }
+
+/* navy buttons with a gold sweep on hover (black in the original; navy is the logo colour) */
+.btn { background: var(--slate); border-color: var(--slate); color: #fff; }
+.btn::before { background: var(--clay); }
+.btn:hover { background: var(--slate); border-color: var(--clay); color: #fff; }
+.olive .btn, .hero .btn { background: #fff; color: var(--slate); border-color: #fff; }
+.olive .btn:hover, .hero .btn:hover { color: #fff; border-color: var(--clay-light); }
+.olive .btn::before, .hero .btn::before { background: var(--clay); }
+
+/* navy panels pick up a hint of gold */
+.marquee { background: var(--slate); border-block: 2px solid rgba(230, 195, 106, .55); }
+.marquee span::after { background: var(--clay-light); }
+.olive, .legacy { border-top: 3px solid var(--clay); }
+.olive h2, .olive h3, .legacy h2 { color: #fff; }
+.dark { background: var(--stone); }
+
+/* cards and tiles: white on tinted ground so they lift off the page */
+.card, .brand { background: #fff; border: 1px solid var(--line); }
+.card:hover, .brand:hover { border-color: var(--clay); }
+.card .num, .brand-hero .back { color: var(--clay); }
+.person.card { background: #fff; }
+
+/* clients: logos on the cream page; each file's white blends into the page colour */
+.clients, .clients [data-clients] { background: var(--ivory); }
+.clients .eyebrow { color: var(--slate); }
+
+/* footer: pale blue with a gold top rule */
+.site-footer { background: var(--stone); border-top: 3px solid var(--clay); }
+.copy-line { border-top: 1px solid rgba(28, 54, 112, .18); color: #4a5568; }
+.foot-contact a:hover, .site-footer a:hover { color: var(--clay); }
+.site-footer .venture { background: #fff; border: 1px solid var(--line); }
+
+/* forms */
+input, textarea { background: #fffdf8; border-color: #cfc7b2; }
+input:focus, textarea:focus { border-color: var(--slate); box-shadow: 0 0 0 3px rgba(28, 54, 112, .12); }
+.progress { background: linear-gradient(90deg, var(--slate), var(--clay)); }
+.to-top { background: var(--slate); }
+.to-top:hover { background: var(--clay); color: #fff; }
+
+/* The scrolling track is animated (its own stacking context), so blending must happen on the track, not on each logo:
+   multiply makes every file's white background take the page colour, leaving only the logo visible. */
+.clients .marquee-track { mix-blend-mode: multiply; }
+.clients img { mix-blend-mode: normal; }
+
+/* bright gold for decoration, deep gold (--clay) stays for text */
+.section-head::after { background: linear-gradient(90deg, var(--gold) 0, rgba(195, 154, 43, .3) 28%, var(--line) 60%); }
+.brand-nav::before { background: linear-gradient(90deg, var(--gold), var(--line) 40%); }
+.btn::before, .olive .btn::before, .hero .btn::before { background: var(--gold); }
+.btn:hover { border-color: var(--gold); }
+.olive .btn:hover, .hero .btn:hover { border-color: var(--clay-light); }
+.marquee { border-block-color: rgba(230, 195, 106, .6); }
+.olive, .legacy { border-top: 3px solid var(--gold); }
+.card:hover, .brand:hover { border-color: var(--gold); }
+.site-footer { border-top: 3px solid var(--gold); }
+.progress { background: linear-gradient(90deg, var(--slate), var(--gold)); }
+.to-top:hover { background: var(--gold); }
+.nav a::before { background: var(--gold); }
+.brand::after { background: var(--gold); }

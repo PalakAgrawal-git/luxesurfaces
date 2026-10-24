@@ -9,12 +9,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&family=Wix+Madefor+Display:wght@400;500&family=Wix+Madefor+Text:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=133">
+  <link rel="stylesheet" href="css/style.css?v=134">
 </head>
 <body>
 
 <section class="hero brands-hero">
-  <img src="assets/showroom/display-hall.jpg" alt="Luxe Surfaces experience centre">
+  <video autoplay muted loop playsinline poster="https://static.wixstatic.com/media/027a73_f44a218586054d76991e6ce8fc5c3d18f000.jpg">
+    <source src="https://video.wixstatic.com/video/027a73_f44a218586054d76991e6ce8fc5c3d18/1080p/mp4/file.mp4" type="video/mp4">
+  </video>
   <div class="hero-inner">
     <h1>Our Global Network of Trusted Partners</h1>
     <p>We collaborate with the world’s most respected ceramic and porcelain brands—leaders in innovation, sustainability, and expressive material design. Each partner brings a unique design philosophy, advanced manufacturing expertise, and a commitment to elevating modern architectural spaces.</p>
@@ -51,16 +53,16 @@
   </div>
 </section>
 
-<script src="js/brands-data.js?v=133"></script>
+<script src="js/brands-data.js?v=134"></script>
 <script>
   // Flaviker and Porcelaingres have no logo in the Drive folder, so they show the name only.
   document.getElementById("brands").innerHTML = BRANDS.map((b) => `
     <a class="brand${b.logo ? "" : " nologo"}" href="brand.html?b=${b.slug}">
-      ${b.logo ? `<img src="${b.logo}?v=133" alt="${b.name} logo" loading="lazy">` : `<h3>${b.name}</h3>`}
+      ${b.logo ? `<img src="${b.logo}?v=134" alt="${b.name} logo" loading="lazy">` : `<h3>${b.name}</h3>`}
       <span>${b.name}</span>
       <small>Learn More</small>
     </a>`).join("");
 </script>
-<script src="js/main.js?v=133"></script>
+<script src="js/main.js?v=134"></script>
 </body>
 </html>

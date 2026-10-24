@@ -9,24 +9,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&family=Wix+Madefor+Display:wght@400;500&family=Wix+Madefor+Text:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=90">
+  <link rel="stylesheet" href="css/style.css?v=91">
 </head>
 <body class="page-light">
 
-<section class="page-hero navy-hero">
-  <div class="wrap reveal">
+<section class="hero brands-hero">
+  <video autoplay muted loop playsinline poster="https://static.wixstatic.com/media/027a73_cbdfac33827a429ebf104897e4424bbdf000.jpg">
+    <source src="https://video.wixstatic.com/video/027a73_cbdfac33827a429ebf104897e4424bbd/720p/mp4/file.mp4" type="video/mp4">
+  </video>
+  <div class="hero-inner">
     <span class="eyebrow">Luxe Surfaces</span>
     <h1>Our Global Network of Trusted Partners</h1>
     <p>We collaborate with the world’s most respected ceramic and porcelain brands—leaders in innovation, sustainability, and expressive material design. Each partner brings a unique design philosophy, advanced manufacturing expertise, and a commitment to elevating modern architectural spaces.</p>
   </div>
 </section>
-
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Eterni</span><span>Fiandre</span><span>Ariostea</span><span>Emil Ceramica</span><span>Versace</span><span>Flaviker</span><span>Porcelaingres</span><span>Porcelanosa</span><span>Sant'Agostino</span><span>Delconca</span><span>Panaria</span><span>Natucer</span><span>Inalco</span><span>Tecnografica</span>
-    <span>Eterni</span><span>Fiandre</span><span>Ariostea</span><span>Emil Ceramica</span><span>Versace</span><span>Flaviker</span><span>Porcelaingres</span><span>Porcelanosa</span><span>Sant'Agostino</span><span>Delconca</span><span>Panaria</span><span>Natucer</span><span>Inalco</span><span>Tecnografica</span>
-  </div>
-</div>
 
 <section>
   <div class="wrap">
@@ -57,16 +53,16 @@
   </div>
 </section>
 
-<script src="js/brands-data.js?v=90"></script>
+<script src="js/brands-data.js?v=91"></script>
 <script>
   // Flaviker and Porcelaingres have no logo in the Drive folder, so they show the name only.
   document.getElementById("brands").innerHTML = BRANDS.map((b) => `
     <a class="brand${b.logo ? "" : " nologo"}" href="brand.html?b=${b.slug}">
-      ${b.logo ? `<img src="${b.logo}?v=90" alt="${b.name} logo" loading="lazy">` : `<h3>${b.name}</h3>`}
+      ${b.logo ? `<img src="${b.logo}?v=91" alt="${b.name} logo" loading="lazy">` : `<h3>${b.name}</h3>`}
       <span>${b.name}</span>
       <small>Learn More</small>
     </a>`).join("");
 </script>
-<script src="js/main.js?v=90"></script>
+<script src="js/main.js?v=91"></script>
 </body>
 </html>

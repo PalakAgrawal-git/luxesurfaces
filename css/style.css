@@ -1085,3 +1085,13 @@ body { background: var(--porcelain); min-height: 100vh; }
 .split .media.fit-video { height: 100svh; min-height: 520px; max-height: 100svh; background: var(--navy); display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 0; }
 .split .media.fit-video video { width: 100%; height: 100%; object-fit: contain; object-position: center; transform: none; border-radius: 0; }
 @media (max-width: 800px) { .split .media.fit-video { height: 82svh; max-height: 82svh; } }
+
+/* Journey video: the panel is exactly the video's size, so the blue starts right at its edges */
+.split:has(> .media.fit-video) { grid-template-columns: auto minmax(0, 1fr); }
+.split .media.fit-video { padding: 0; width: auto; height: 100svh; max-height: none; min-height: 0; display: block; background: transparent; overflow: hidden; }
+.split .media.fit-video video { display: block; width: auto; height: 100%; aspect-ratio: 720 / 1224; object-fit: cover; border-radius: 0; }
+@media (max-width: 800px) {
+  .split:has(> .media.fit-video) { grid-template-columns: 1fr; }
+  .split .media.fit-video { width: 100%; height: auto; }
+  .split .media.fit-video video { width: 100%; height: auto; max-height: 82svh; object-fit: cover; }
+}

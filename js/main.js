@@ -45,7 +45,7 @@ document.querySelectorAll("[data-clients]").forEach((el) => {
   // Snap near-white (JPEG off-whites, baked-in checkerboards) to pure white so the multiply blend leaves nothing but the page colour
   const tv = Array.from({ length: 21 }, (_, k) => (k >= 19 ? 1 : k / 20)).join(" ");
   document.body.insertAdjacentHTML("beforeend", `<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="lx-white" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="table" tableValues="${tv}"/><feFuncG type="table" tableValues="${tv}"/><feFuncB type="table" tableValues="${tv}"/></feComponentTransfer></filter></svg>`);
-  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=82" alt="Client logo" loading="lazy">`).join("");
+  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=83" alt="Client logo" loading="lazy">`).join("");
   el.innerHTML = `<div class="marquee-track">${imgs}${imgs}</div>`;
 });
 
@@ -54,7 +54,7 @@ document.body.insertAdjacentHTML("beforeend", `
   <div class="wrap">
     <div class="foot-orig">
       <div class="foot-left">
-        <img class="venture" src="assets/brand/venture-logos.png?v=82" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
+        <img class="venture" src="assets/brand/venture-logos.png?v=83" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
         <span class="logo">LUXE SURFACES</span>
         <div class="foot-contact">
           <a href="tel:+918657030761">+91 86570 30761</a>
@@ -342,7 +342,9 @@ if (!reduceMotion) {
       if (r.bottom < -50 || r.top > vh + 50) return;
       const start = vh * 0.88, end = vh * 0.32;
       const t = Math.min(Math.max((start - r.top) / (start - end), 0), 1);
-      const lit = t * (words.length + 5);
+      // One-way: words that have lit up stay lit when scrolling back up
+      const lit = Math.max(t * (words.length + 5), p._lit || 0);
+      p._lit = lit;
       for (let i = 0; i < words.length; i++) {
         words[i].style.opacity = (0.2 + 0.8 * Math.min(Math.max(lit - i, 0), 1)).toFixed(2);
       }

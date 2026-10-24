@@ -1095,3 +1095,9 @@ body { background: var(--porcelain); min-height: 100vh; }
   .split .media.fit-video { width: 100%; height: auto; }
   .split .media.fit-video video { width: 100%; height: auto; max-height: 82svh; object-fit: cover; }
 }
+
+/* Journey video a little larger: wider panel, only a sliver cropped top and bottom */
+@media (min-width: 801px) {
+  .split .media.fit-video { width: min(48vw, calc(100svh * 0.74)); }
+  .split .media.fit-video video { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; }
+}

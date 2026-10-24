@@ -990,3 +990,11 @@ a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(
 .img-card.logo-card .label h3, .img-card.logo-card .label small, .img-card.logo-card:hover .label small { color: var(--porcelain); }
 .proj-logo { background: var(--beige); border-radius: var(--img-r); }
 .wa { background: #25d366; }
+
+/* Cards: Luxe Navy fill with Porcelain text (brand tiles keep their light fill so the partner logos stay legible) */
+.card { background: var(--navy); color: var(--porcelain); }
+.card h3, .card h4 { color: var(--porcelain); }
+.card p, .card small { color: var(--porcelain); }
+.card .num { color: var(--beige); }
+.card:hover { background: #24428a; box-shadow: 0 14px 30px rgba(28, 54, 112, .22); }
+.card a { color: var(--porcelain); }

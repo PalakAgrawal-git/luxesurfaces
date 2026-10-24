@@ -1129,3 +1129,19 @@ body { background: var(--porcelain); min-height: 100vh; }
   .split .media.fit-video { width: 100%; height: auto; }
   .split .media.fit-video video { width: 100%; height: auto; max-height: none; aspect-ratio: 720 / 1224; object-fit: contain; }
 }
+
+/* ===== Phone pass 2 ===== */
+@media (max-width: 800px) {
+  section { padding: 48px 0; }
+  .site-footer { padding: 48px 0 28px; }
+  .foot-grid { gap: 28px; }
+  .site-footer .venture { width: 150px; }
+  .copy-line { margin-top: 24px; padding-top: 18px; }
+  .page-hero { padding: 112px 0 36px; }
+  .split .copy { padding: 36px 20px; }
+  .grid { gap: 14px; }
+  .brand { padding: 22px 14px; }
+  .episode .btn { width: 100%; justify-content: center; }
+  html, body { overflow-x: hidden; }
+  .section-head h2 { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+}

@@ -1101,3 +1101,13 @@ body { background: var(--porcelain); min-height: 100vh; }
   .split .media.fit-video { width: min(48vw, calc(100svh * 0.74)); }
   .split .media.fit-video video { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; }
 }
+
+/* Journey section: larger video and bigger, centred copy so the blue is filled */
+@media (min-width: 801px) {
+  .split .media.fit-video { width: min(54vw, calc(100svh * 0.82)); }
+  .split:has(> .media.fit-video) { height: min(100svh, 760px); }
+  .split .media.fit-video { height: 100%; }
+  .split:has(> .media.fit-video) > .copy { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 clamp(32px, 5vw, 96px); }
+  .split:has(> .media.fit-video) > .copy h2 { font-size: clamp(2.2rem, 3.8vw, 3.6rem); line-height: 1.1; }
+  .split:has(> .media.fit-video) > .copy p { font-size: clamp(1.05rem, 1.4vw, 1.3rem); max-width: 30ch; }
+}

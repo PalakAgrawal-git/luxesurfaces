@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&family=Wix+Madefor+Display:wght@400;500&family=Wix+Madefor+Text:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=99">
+  <link rel="stylesheet" href="css/style.css?v=101">
 </head>
 <body>
 
@@ -36,7 +36,7 @@
   <div data-clients></div>
 </section>
 
-<script src="js/projects-data.js?v=99"></script>
+<script src="js/projects-data.js?v=101"></script>
 <script>
   document.getElementById("project-grid").innerHTML = PROJECTS.map((p) => `
     <a class="img-card${p.coverIsLogo ? " logo-card" : ""}" href="project.html?p=${p.slug}"${p.images.length > 1 ? ` data-slides="${p.images.slice(1).join(",")}"` : ""}>
@@ -44,6 +44,6 @@
       <div class="label"><h3>${p.title}</h3><small>${p.place} · View project</small></div>
     </a>`).join("");
 </script>
-<script src="js/main.js?v=99"></script>
+<script src="js/main.js?v=101"></script>
 </body>
 </html>

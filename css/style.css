@@ -1029,3 +1029,18 @@ a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(
 .person.card:hover, .card.person:hover { background: var(--porcelain); box-shadow: 0 14px 30px rgba(28, 54, 112, .14); }
 .person.card h3, .card.person h3 { color: var(--navy); }
 .person.card p, .card.person p { color: var(--charcoal); }
+
+/* Banner text: proper side gutters, clear of the WhatsApp button and the scroll cue */
+.hero { padding-bottom: clamp(72px, 12vh, 130px); }
+.hero-inner { width: min(1240px, 100% - 112px); margin-left: max(56px, calc((100% - 1240px) / 2)); margin-right: auto; }
+.hero-inner > * { max-width: 720px; }
+.hero-inner h1 { font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 1.1; }
+.hero .scroll-cue { right: 28px; bottom: 36px; }
+@media (max-width: 800px) {
+  .hero-inner { width: calc(100% - 40px); margin-left: 20px; }
+  .hero { padding-bottom: 96px; }
+}
+
+/* Soft shade at the foot of the banner so the white text always reads, whatever is in the video */
+.hero:not(.brands-hero)::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, .62) 0%, rgba(0, 0, 0, .3) 38%, rgba(0, 0, 0, 0) 68%); z-index: 0; pointer-events: none; }
+.hero .hero-inner h1, .hero .hero-inner p { text-shadow: 0 1px 16px rgba(0, 0, 0, .4); }

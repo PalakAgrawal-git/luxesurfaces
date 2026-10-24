@@ -865,3 +865,12 @@ h3 { font-size: 1.5rem; }
 body, p, li, a, button, input, textarea, select, small, .btn, .nav a, .menu-btn, .eyebrow, .site-footer, .site-footer *, .marquee span, .brand span, .foot-contact a, .copy-line { font-family: var(--sans); }
 h1, h2, h3, h4, .serif, .logo, .curtain-logo, .card .num, .episode .num, .episode .t, .brand-nav a, .legacy-stats .big { font-family: var(--head); }
 .site-footer .logo { font-family: var(--head); }
+
+/* Podcast page */
+.page-hero .wrap.reveal { text-align: center; }
+.page-hero .wrap.reveal p { margin-left: auto; margin-right: auto; max-width: 640px; }
+.episode { grid-template-columns: 64px 1fr auto; }
+.episode .t { font-size: 1.45rem; font-weight: 600; line-height: 1.25; }
+.episode:hover { background: rgba(207, 197, 180, .35); }
+.episode:hover .num { color: var(--navy); }
+@media (max-width: 700px) { .episode { grid-template-columns: 40px 1fr; } .episode .t { font-size: 1.2rem; } }

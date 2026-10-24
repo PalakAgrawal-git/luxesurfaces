@@ -45,7 +45,7 @@ document.querySelectorAll("[data-clients]").forEach((el) => {
   // Snap near-white (JPEG off-whites, baked-in checkerboards) to pure white so the multiply blend leaves nothing but the page colour
   const tv = Array.from({ length: 21 }, (_, k) => (k >= 19 ? 1 : k / 20)).join(" ");
   document.body.insertAdjacentHTML("beforeend", `<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="lx-white" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="table" tableValues="${tv}"/><feFuncG type="table" tableValues="${tv}"/><feFuncB type="table" tableValues="${tv}"/></feComponentTransfer></filter></svg>`);
-  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=108" alt="Client logo" loading="lazy">`).join("");
+  const imgs = CLIENT_LOGOS.map((f) => `<img src="${f}?v=113" alt="Client logo" loading="lazy">`).join("");
   el.innerHTML = `<div class="marquee-track">${imgs}${imgs}</div>`;
 });
 
@@ -54,7 +54,7 @@ document.body.insertAdjacentHTML("beforeend", `
   <div class="wrap">
     <div class="foot-orig">
       <div class="foot-left">
-        <img class="venture" src="assets/brand/venture-logos.png?v=108" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
+        <img class="venture" src="assets/brand/venture-logos.png?v=113" alt="Luxe Surfaces, a venture by C. Bhogilal West-End and Arihant Granites" loading="lazy">
         <span class="logo">LUXE SURFACES</span>
         <div class="foot-contact">
           <a href="tel:+918657030761">+91 86570 30761</a>
@@ -145,7 +145,7 @@ const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const hero = document.querySelector(".hero");
 const heroMedia = hero && hero.querySelector("video, img");
 const heroCopy = hero && hero.querySelector(".hero-inner");
-const driftImgs = [...document.querySelectorAll(".split .media img, .split .media video, .gallery figure img, .img-card:not(.logo-card) img")];
+const driftImgs = [...document.querySelectorAll(".split .media:not(.portrait-media) img, .split .media:not(.portrait-media) video, .gallery figure img, .img-card:not(.logo-card) img")];
 driftImgs.forEach((m) => { m.dataset.drift = ""; m.style.height = "115%"; });
 
 let ticking = false;

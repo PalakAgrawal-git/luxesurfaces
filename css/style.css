@@ -998,3 +998,6 @@ a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(
 .card .num { color: var(--beige); }
 .card:hover { background: #24428a; box-shadow: 0 14px 30px rgba(28, 54, 112, .22); }
 .card a { color: var(--porcelain); }
+.person.card, .card.person { background: var(--navy); }
+.person.card:hover, .card.person:hover { background: #24428a; }
+.person.card p, .card.person p { color: var(--porcelain); }

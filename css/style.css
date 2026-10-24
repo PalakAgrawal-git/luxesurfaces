@@ -915,3 +915,56 @@ html { scrollbar-width: none; }
 /* Client strip: Porcelain White from the brand guide (replaces the beige) */
 .clients, .clients [data-clients], .clients .marquee-track { background: var(--porcelain); }
 .clients { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+/* ===== Brand colour guide, strict pass: only the eight guide colours (plus tints of them) ===== */
+:root {
+  --ivory: var(--porcelain);   /* base: Porcelain White */
+  --stone: var(--beige);       /* neutral background sections: Architectural Beige */
+  --line: var(--airy);         /* hairlines: Airy grey */
+  --muted: var(--charcoal);    /* supporting text stays Charcoal for legibility */
+}
+::selection { background: var(--navy); color: var(--porcelain); }
+body { background: var(--porcelain); color: var(--charcoal); }
+html { background: var(--porcelain); scrollbar-color: var(--taupe) var(--porcelain); }
+::-webkit-scrollbar, ::-webkit-scrollbar-track { background: var(--porcelain); }
+
+/* Headlines: Luxe Navy on light, Charcoal for sub-heads */
+h1, h2 { color: var(--navy); }
+h3, h4 { color: var(--charcoal); }
+.dark h1, .dark h2, .dark h3, .olive h1, .olive h2, .olive h3, .hero h1, .hero h2, .hero-inner h1 { color: var(--porcelain); }
+.eyebrow { color: var(--terracotta); }
+.hero .eyebrow, .dark .eyebrow, .olive .eyebrow { color: var(--beige); }
+
+/* Surfaces */
+.page-hero { background: linear-gradient(180deg, var(--beige) 0%, var(--porcelain) 100%); }
+.card, .brand, .img-card .label { background: var(--porcelain); border-color: var(--airy); }
+section[style*="var(--stone)"], .stone { background: var(--beige); }
+.card { box-shadow: none; }
+.site-header.solid, .page-light .site-header { background: rgba(248, 248, 248, .94); border-bottom: 1px solid var(--airy); }
+.site-footer { background: var(--taupe); color: var(--charcoal); border-top: 0; }
+.site-footer .logo, .foot-right p, .foot-contact a, .site-footer a { color: var(--charcoal); }
+.copy-line { border-top-color: var(--charcoal); color: var(--charcoal); }
+
+/* Buttons: Navy with a Terracotta accent */
+.btn { background: var(--navy); color: var(--porcelain); border-color: var(--navy); }
+.btn:hover { background: var(--navy); color: var(--porcelain); border-color: var(--terracotta); }
+.olive .btn, .hero .btn, .dark .btn { background: var(--porcelain); color: var(--navy); border-color: var(--porcelain); }
+.wa { background: var(--navy); }
+.to-top:hover { color: var(--porcelain); }
+
+/* Social icons in brand colours */
+.soc-whatsapp, .soc-instagram, .soc-facebook, .soc-x, .soc-linkedin, .soc-youtube { background: var(--navy); }
+.socials a:hover .soc-whatsapp, .socials a:hover .soc-instagram, .socials a:hover .soc-facebook, .socials a:hover .soc-x, .socials a:hover .soc-linkedin, .socials a:hover .soc-youtube { background: var(--terracotta); }
+
+/* Client strip on the base colour, hairlines in Airy grey */
+.clients, .clients [data-clients], .clients .marquee-track { background: var(--porcelain); }
+.clients { border-color: var(--airy); }
+
+/* Numerals and accents */
+.card .num, .episode .num { color: var(--terracotta); }
+.episode:hover { background: rgba(207, 197, 180, .35); }
+a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(--terracotta); }
+.img-card .label { background: linear-gradient(to top, rgba(28, 54, 112, .92) 0%, rgba(28, 54, 112, .6) 60%, rgba(28, 54, 112, 0) 100%); border: 0; }
+.img-card .label h3 { color: var(--porcelain); }
+.img-card .label small { color: var(--porcelain); }
+.img-card.logo-card .label { background: var(--navy); }

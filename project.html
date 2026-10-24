@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#efede9">
+  <title>Projects | Luxe Surfaces</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Wix+Madefor+Display:wght@400;500&family=Wix+Madefor+Text:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=64">
+</head>
+<body class="page-light">
+
+<main id="project"></main>
+
+<script src="js/projects-data.js?v=64"></script>
+<script>
+  const slug = new URLSearchParams(location.search).get("p");
+  const i = Math.max(0, PROJECTS.findIndex((p) => p.slug === slug));
+  const p = PROJECTS[i];
+  const next = PROJECTS[(i + 1) % PROJECTS.length];
+  const prev = PROJECTS[(i - 1 + PROJECTS.length) % PROJECTS.length];
+  document.title = `${p.title} | Luxe Surfaces`;
+
+  const gallery = p.images.length
+    ? `<section class="brand-gallery">
+         <div class="wrap gallery proj-gallery n${Math.min(p.images.length, 3)}">
+           ${p.images.map((f, n) => `<figure><img src="${f}" alt="${p.title} ${n + 1}"></figure>`).join("")}
+         </div>
+       </section>`
+    : `<section class="brand-gallery">
+         <div class="wrap"><div class="proj-logo"><img src="${p.cover}" alt="${p.title}"></div></div>
+       </section>`;
+
+  document.getElementById("project").innerHTML = `
+    <section class="page-hero brand-hero">
+      <div class="wrap">
+        <a class="back" href="projects.html">← All projects</a>
+        <h1>${p.title}</h1>
+        <p class="proj-place">${p.place}</p>
+      </div>
+    </section>
+
+    ${gallery}
+
+    <section>
+      <div class="wrap project-body reveal">
+        ${p.heading ? `<h2>${p.heading}</h2>` : ""}
+        <dl class="facts">${p.facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>
+        ${p.body.map((t) => `<p>${t}</p>`).join("")}
+        <a class="btn" href="contact.html">Consultation</a>
+      </div>
+    </section>
+
+    <nav class="brand-nav wrap">
+      <a href="project.html?p=${prev.slug}"><small>Previous</small>${prev.title}</a>
+      <a href="project.html?p=${next.slug}" style="text-align:right"><small>Next</small>${next.title}</a>
+    </nav>`;
+</script>
+<script src="js/main.js?v=64"></script>
+</body>
+</html>

@@ -1,16 +1,27 @@
 :root {
   color-scheme: light;
-  --ivory: #f6f0e3;      /* page: warm cream with a faint golden tint (not white) */
-  --stone: #e6edf7;      /* soft pale blue for alternate sections and the footer */
-  --ink: #1a1a1a;
-  --slate: #1c3670;      /* logo navy for panels and buttons */
-  --fg: #f8f8f8;
-  --text: #1a1a1a;
-  --muted: #5a5a55;
-  --clay: #8a6612;       /* deep gold: used for gold TEXT (readable on cream) */
-  --gold: #c39a2b;       /* bright gold: lines, borders, hover details */
-  --clay-light: #e6c36a; /* light gold for use on navy */
-  --line: #d9d3c2;       /* warm hairline */
+  /* Brand palette (from the brand colour sheet) */
+  --navy: #1c3670;       /* Luxe Navy: primary brand colour */
+  --beige: #cfc5b4;      /* Architectural Beige: neutral background */
+  --taupe: #a8937f;      /* Stone Taupe: soft contrast layer */
+  --terracotta: #d35b27; /* Burnt Terracotta: accent */
+  --porcelain: #f8f8f8;  /* Porcelain White: clean base */
+  --grey: #8f8f8f;       /* Grey */
+  --airy: #c8c8c8;       /* Airy Grey */
+  --charcoal: #1a1a1a;   /* Charcoal Black: headlines and text */
+
+  /* How the site uses them */
+  --ivory: #efede9;      /* page: Porcelain White warmed with a touch of Architectural Beige, so it is not stark white */
+  --stone: #e4ded6;      /* alternate sections: Architectural Beige at about half strength */
+  --ink: var(--charcoal);
+  --slate: var(--navy);
+  --fg: var(--porcelain);
+  --text: var(--charcoal);
+  --muted: #5f5f5f;      /* Grey darkened so small supporting text stays readable */
+  --clay: var(--terracotta);
+  --gold: var(--terracotta); /* decorative lines and hover details now use the brand accent */
+  --clay-light: var(--beige); /* accents on navy panels */
+  --line: #d9d2c6;       /* hairlines: Architectural Beige, lightened */
   --serif: "Montserrat", Arial, sans-serif;
   --sans: "Montserrat", Arial, sans-serif;
   --madefor-d: "Wix Madefor Display", "Montserrat", Arial, sans-serif;
@@ -716,12 +727,12 @@ body { background: var(--ivory); }
 ::selection { background: var(--clay-light); color: var(--slate); }
 
 /* header */
-.site-header.solid, .page-light .site-header { background: rgba(246, 240, 227, .95); box-shadow: 0 1px 0 var(--line), 0 2px 0 rgba(184, 137, 31, .18); }
+.site-header.solid, .page-light .site-header { background: rgba(239, 237, 233, .95); box-shadow: 0 1px 0 var(--line), 0 2px 0 rgba(211, 91, 39, .22); }
 @media (max-width: 900px) { .nav { background: var(--ivory); } }
 
 /* page titles sit on a soft blue-to-cream wash instead of flat white */
 .page-hero { background: linear-gradient(180deg, var(--stone) 0%, var(--ivory) 100%); }
-.section-head::after { background: linear-gradient(90deg, var(--clay) 0, rgba(184, 137, 31, .25) 28%, var(--line) 60%); }
+.section-head::after { background: linear-gradient(90deg, var(--clay) 0, rgba(211, 91, 39, .28) 28%, var(--line) 60%); }
 .brand-nav::before { background: linear-gradient(90deg, var(--clay), var(--line) 40%); }
 
 /* navy buttons with a gold sweep on hover (black in the original; navy is the logo colour) */
@@ -733,7 +744,7 @@ body { background: var(--ivory); }
 .olive .btn::before, .hero .btn::before { background: var(--clay); }
 
 /* navy panels pick up a hint of gold */
-.marquee { background: var(--slate); border-block: 2px solid rgba(230, 195, 106, .55); }
+.marquee { background: var(--slate); border-block: 2px solid rgba(207, 197, 180, .6); }
 .marquee span::after { background: var(--clay-light); }
 .olive, .legacy { border-top: 3px solid var(--clay); }
 .olive h2, .olive h3, .legacy h2 { color: #fff; }
@@ -751,7 +762,7 @@ body { background: var(--ivory); }
 
 /* footer: pale blue with a gold top rule */
 .site-footer { background: var(--stone); border-top: 3px solid var(--clay); }
-.copy-line { border-top: 1px solid rgba(28, 54, 112, .18); color: #4a5568; }
+.copy-line { border-top: 1px solid rgba(28, 54, 112, .22); color: #4a4a4a; }
 .foot-contact a:hover, .site-footer a:hover { color: var(--clay); }
 .site-footer .venture { background: #fff; border: 1px solid var(--line); }
 
@@ -768,12 +779,12 @@ input:focus, textarea:focus { border-color: var(--slate); box-shadow: 0 0 0 3px 
 .clients img { mix-blend-mode: normal; }
 
 /* bright gold for decoration, deep gold (--clay) stays for text */
-.section-head::after { background: linear-gradient(90deg, var(--gold) 0, rgba(195, 154, 43, .3) 28%, var(--line) 60%); }
+.section-head::after { background: linear-gradient(90deg, var(--gold) 0, rgba(211, 91, 39, .28) 28%, var(--line) 60%); }
 .brand-nav::before { background: linear-gradient(90deg, var(--gold), var(--line) 40%); }
 .btn::before, .olive .btn::before, .hero .btn::before { background: var(--gold); }
 .btn:hover { border-color: var(--gold); }
 .olive .btn:hover, .hero .btn:hover { border-color: var(--clay-light); }
-.marquee { border-block-color: rgba(230, 195, 106, .6); }
+.marquee { border-block-color: rgba(207, 197, 180, .6); }
 .olive, .legacy { border-top: 3px solid var(--gold); }
 .card:hover, .brand:hover { border-color: var(--gold); }
 .site-footer { border-top: 3px solid var(--gold); }
@@ -781,3 +792,62 @@ input:focus, textarea:focus { border-color: var(--slate); box-shadow: 0 0 0 3px 
 .to-top:hover { background: var(--gold); }
 .nav a::before { background: var(--gold); }
 .brand::after { background: var(--gold); }
+
+
+/* ===== Projects: clickable cards and project pages ===== */
+a.img-card { cursor: pointer; }
+.img-card .label h3 { margin: 0; }
+.img-card .label small { display: block; margin-top: 4px; font-size: .8rem; color: rgba(255, 255, 255, .85); letter-spacing: .02em; }
+.img-card:hover .label small { color: var(--clay-light); }
+.img-card.logo-card { background: #fff; border: 1px solid var(--line); color: var(--ink); }
+.img-card.logo-card img { position: absolute; left: 7%; top: 38%; width: 86%; height: auto; aspect-ratio: 458 / 70; object-fit: fill; object-view-box: inset(42.67% 2% 42.67% 2%); }
+.img-card.logo-card .label { background: none; }
+.img-card.logo-card .label small { color: var(--muted); }
+.img-card.logo-card:hover .label small { color: var(--clay); }
+
+.proj-place { font-size: 1.125rem; color: var(--muted); margin-top: .4rem; }
+.proj-gallery.n1 { grid-template-columns: 1fr; grid-auto-rows: clamp(260px, 42vw, 520px); }
+.proj-gallery.n2 { grid-template-columns: 1fr 1fr; grid-auto-rows: clamp(240px, 34vw, 440px); }
+.proj-gallery.n3 { grid-template-columns: 2fr 1fr; grid-auto-rows: clamp(150px, 20vw, 260px); }
+.proj-gallery.n1 figure, .proj-gallery.n2 figure { grid-row: auto !important; grid-column: auto !important; }
+.proj-logo { max-width: 560px; margin: 0 auto; background: #fff; border: 1px solid var(--line); padding: 36px 32px; }
+.proj-logo img { width: 100%; height: auto; aspect-ratio: 458 / 70; object-fit: fill; object-view-box: inset(42.67% 2% 42.67% 2%); }
+
+.project-body { max-width: 860px; }
+.project-body h2 { margin-bottom: 1.4rem; }
+.project-body p { font-size: 1.125rem; }
+.project-body p + p { margin-top: 1.2rem; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0; margin: 0 0 2.2rem; border-top: 3px solid var(--gold); background: #fff; border-bottom: 1px solid var(--line); }
+.facts > div { padding: 18px 22px; border-right: 1px solid var(--line); }
+.facts > div:last-child { border-right: 0; }
+.facts dt { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.facts dd { margin: 0; font-size: 1rem; font-weight: 700; line-height: 1.4; }
+@media (max-width: 600px) {
+  .proj-gallery.n3 { grid-template-columns: 1fr; grid-auto-rows: 230px; }
+  .proj-gallery.n3 figure { grid-row: auto !important; grid-column: auto !important; }
+  .proj-gallery.n2 { grid-template-columns: 1fr; grid-auto-rows: 230px; }
+  .facts > div { border-right: 0; border-bottom: 1px solid var(--line); }
+  .facts > div:last-child { border-bottom: 0; }
+  .proj-logo { padding: 26px 20px; }
+}
+
+
+/* ===== Brand colour sheet applied ===== */
+.card, .person.card { background: var(--porcelain); }
+.site-footer { background: var(--beige); border-top: 3px solid var(--taupe); }
+.site-footer .venture { border-color: var(--taupe); }
+.olive, .legacy { border-top: 3px solid var(--taupe); }
+.marquee { border-block: 2px solid var(--taupe); }
+.page-hero { background: linear-gradient(180deg, var(--stone) 0%, var(--ivory) 100%); }
+.facts { background: var(--porcelain); border-top-color: var(--terracotta); }
+/* small text links: charcoal with a terracotta underline (terracotta alone is too light for small text) */
+.brand-hero .back, .card .more { color: var(--ink); border-bottom: 2px solid var(--terracotta); padding-bottom: 1px; width: fit-content; }
+.brand-hero .back:hover, .card:hover .more { color: var(--ink); }
+.foot-contact a { text-decoration-color: var(--terracotta); }
+.curtain-logo { color: var(--beige); }
+.to-top:hover { background: var(--terracotta); }
+.btn::before, .olive .btn::before, .hero .btn::before { background: var(--terracotta); }
+.btn:hover, .btn:focus-visible { border-color: var(--terracotta); }
+.olive .btn:hover, .hero .btn:hover { border-color: var(--beige); }
+.copy-line { border-top-color: rgba(26, 26, 26, .18); color: #4a4a4a; }
+.episode .num { font-size: 1.5rem; font-weight: 600; }

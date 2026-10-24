@@ -1049,3 +1049,7 @@ a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(
 .brand-gallery { padding-top: 0; padding-bottom: 0; }
 .brand-gallery + section { padding-top: 48px; padding-bottom: clamp(48px, 7vw, 88px); }
 @media (max-width: 800px) { .brand-gallery + section { padding-top: 32px; } }
+
+/* Links inside navy cards read in white */
+.card .more, .card .link, .card a, .card a:not(.btn) { color: var(--porcelain); }
+.card a:hover { color: var(--porcelain); }

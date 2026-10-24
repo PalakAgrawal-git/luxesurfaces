@@ -1,17 +1,19 @@
 :root {
-  color-scheme: dark;
-  --ivory: #14110f;      /* midnight page background */
-  --stone: #1d1915;      /* slightly lifted sections */
-  --ink: #0c0a09;        /* deepest: footer, word strip, intro curtain */
-  --slate: #231e1a;      /* raised panels */
-  --fg: #f3ece0;         /* light text on dark */
-  --text: #e4dccf;
-  --muted: #a1978a;
-  --clay: #d4a95e;       /* brass accent */
-  --clay-light: #ecd09a;
-  --line: #372f29;
-  --serif: "Scope One", Georgia, serif;
-  --sans: "Scope One", Georgia, serif;
+  color-scheme: light;
+  --ivory: #f8f8f8;      /* page background, as on the original site */
+  --stone: #f1f1f1;      /* very light alternate sections */
+  --ink: #1a1a1a;        /* text colour on the original */
+  --slate: #1c3670;      /* brand navy (from the logo) for the few dark panels */
+  --fg: #f8f8f8;         /* light text on navy / photos */
+  --text: #1a1a1a;
+  --muted: #5f5f5f;
+  --clay: #d35b27;       /* brand orange (from the logo) */
+  --clay-light: #f0a37a;
+  --line: #dedede;
+  --serif: "Montserrat", Arial, sans-serif;
+  --sans: "Montserrat", Arial, sans-serif;
+  --madefor-d: "Wix Madefor Display", "Montserrat", Arial, sans-serif;
+  --madefor-t: "Wix Madefor Text", "Montserrat", Arial, sans-serif;
 }
 ::selection { background: var(--clay); color: #14110f; }
 
@@ -599,3 +601,104 @@ b, strong, th, h4, h5, h6 { font-weight: 400; }
   .card .more { font-size: .85rem; }
 }
 @media (max-width: 800px) { .site-header .logo { display: inline-flex; align-items: center; min-height: 44px; } }
+
+/* =====================================================================
+   ORIGINAL-SITE THEME (luxesurfaces.in): light page, Montserrat, black pill buttons,
+   brand navy + orange from the logo. Sizes follow the original at desktop width.
+   ===================================================================== */
+::selection { background: var(--clay); color: #fff; }
+body { font-family: var(--sans); font-size: 16px; line-height: 1.6; color: var(--text); background: var(--ivory); }
+
+/* type scale measured on the original: 40 / 32 / 24 / 20 / 16 / 14 / 12 px */
+h1, h2, h3, h4, .serif { font-family: var(--serif); font-weight: 700; letter-spacing: 0; line-height: 1.25; }
+b, strong, th, h4, h5, h6 { font-weight: 700; }
+h1 { font-size: clamp(1.9rem, 3.9vw, 2.5rem); }
+h2 { font-size: clamp(1.6rem, 3.125vw, 2rem); }
+h3 { font-size: 1.5rem; }
+.card h3, .img-card h3, .person h3 { font-size: 1.25rem; }
+.person p, .card p { font-size: .9rem; }
+.lead { font-size: 1rem; }
+.brand-body p { font-size: 1.125rem; }
+
+/* the original has no small eyebrow labels; its section titles ("OUR CLIENTS") are 32px bold headings */
+.eyebrow { display: none; }
+.clients .eyebrow { display: inline-block; font: 700 clamp(1.6rem, 3.125vw, 2rem)/1.2 var(--serif); letter-spacing: 0; color: var(--text); text-transform: uppercase; margin: 0; }
+.clients .eyebrow::before, .clients .eyebrow::after { display: none; }
+
+/* header */
+.logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; letter-spacing: .04em; }
+.nav a, .menu-btn { font-family: var(--serif); font-size: .95rem; font-weight: 600; letter-spacing: 0; }
+.site-header.solid, .page-light .site-header { background: rgba(248, 248, 248, .94); box-shadow: 0 1px 0 var(--line); }
+.site-header.solid .logo, .site-header.solid .nav a, .site-header.solid .menu-btn,
+.page-light .logo, .page-light .nav a, .page-light .menu-btn { color: var(--ink); }
+@media (max-width: 900px) {
+  .nav { background: var(--ivory); }
+  .nav.open { box-shadow: 0 10px 30px rgba(0, 0, 0, .14); }
+  .nav a { color: var(--ink) !important; }
+}
+
+/* black pill buttons, 14px Wix Madefor, like the original */
+.btn { background: #000; color: #fff; border: 1px solid #000; border-radius: 300px; font-family: var(--madefor-t); font-size: .875rem; font-weight: 400; letter-spacing: 0; padding: 13px 38px; }
+.btn::after { display: none; }
+.btn::before { background: var(--clay); }
+.btn:hover { background: #000; color: #fff; border-color: var(--clay); gap: .9rem; }
+.olive .btn, .hero .btn { background: #fff; color: #000; border-color: #fff; }
+.olive .btn:hover, .hero .btn:hover { color: #fff; border-color: var(--clay); }
+
+/* panels: navy (logo colour) instead of dark brown */
+.marquee { background: var(--slate); color: #fff; }
+.marquee span { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
+.marquee span::after { background: var(--clay-light); }
+.olive, .legacy { background: var(--slate); color: rgba(248, 248, 248, .92); }
+.olive h2, .olive h3, .legacy h2 { color: #fff; }
+.dark { background: var(--stone); color: var(--text); }
+.dark h2, .dark h3 { color: var(--ink); }
+.curtain { background: var(--slate); }
+
+/* cards and tiles on a light page */
+.card { background: #fff; border: 1px solid var(--line); box-shadow: none; }
+.card:hover { border-color: var(--clay); box-shadow: 0 14px 34px rgba(0, 0, 0, .09); }
+.brand { background: #fff; border: 1px solid var(--line); }
+.brand:hover { box-shadow: 0 14px 34px rgba(0, 0, 0, .1); }
+.brand h3 { font-size: 1.25rem; color: var(--ink); }
+.brand span { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--ink); }
+.brand small { font-size: .75rem; color: var(--ink); }
+.brand-logo { border: 1px solid var(--line); }
+.brand-nav a { font-size: 1.5rem; font-weight: 700; }
+.episode .t { font-size: 1.25rem; font-weight: 700; line-height: 1.3; }
+.episode .num { font-size: 1.4rem; }
+
+/* clients: original shows the logos plainly on the page */
+.clients { background: var(--ivory); }
+.clients [data-clients] { background: #fff; border-block: 1px solid var(--line); }
+
+/* forms */
+input, textarea { background: #fff; border: 1px solid #c9c9c9; color: var(--text); }
+input:focus, textarea:focus { border-color: var(--ink); }
+label { font-size: .8rem; font-weight: 600; letter-spacing: .06em; }
+
+/* footer: light, in Wix Madefor, like the original */
+.site-footer { background: var(--ivory); color: var(--ink); border-top: 1px solid var(--line); font-family: var(--madefor-t); font-size: 1rem; padding-top: 72px; }
+.site-footer .logo { font-family: var(--madefor-d); font-size: 1.75rem; font-weight: 400; letter-spacing: 0; color: #000; }
+.foot-right p { font-family: var(--madefor-t); font-size: 1rem; line-height: 1.6; color: #000; }
+.foot-contact a { font-family: var(--serif); font-size: 1rem; color: var(--ink); }
+.foot-contact a:hover, .site-footer a:hover { color: var(--clay); }
+.site-footer .venture { border: 1px solid var(--line); }
+.soc-x { background: #000; }
+.copy-line { border-top: 1px solid var(--line); color: var(--muted); font-family: var(--madefor-t); }
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.75rem; }
+  h2, .clients .eyebrow { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  .brand-nav a { font-size: 1.15rem; }
+  .episode .t { font-size: 1.05rem; }
+  #brands .brand span { font-size: .9rem; }
+  #brands .brand h3 { font-size: 1.1rem; }
+  .site-footer .logo { font-size: 1.5rem; }
+}
+.olive h2 .w > span, .legacy h2 .w > span { background: none; -webkit-text-fill-color: currentColor; animation: none; }
+
+/* brands without a logo file show their name once, as the tile title */
+.brand.nologo span { display: none; }
+.brand.nologo h3 { font-size: 1.5rem; }

@@ -1147,3 +1147,13 @@ body { background: var(--porcelain); min-height: 100vh; }
 }
 /* Brands banner is a photo now: same soft foot shade as the other banners so the text reads */
 .brands-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, .62) 0%, rgba(0, 0, 0, .3) 38%, rgba(0, 0, 0, 0) 68%); z-index: 0; pointer-events: none; }
+
+/* Brands tiles: the original site's brand pictures, filling the top of each tile */
+.brand.brand-photo { padding: 0; overflow: hidden; text-align: left; align-items: stretch; gap: 0; }
+.brand.brand-photo img { width: 100% !important; height: auto !important; aspect-ratio: 4 / 3 !important; object-fit: cover !important; object-view-box: none !important; max-width: none !important; max-height: none !important; border-radius: 0; margin: 0; transition: transform .6s var(--ease-out); }
+.brand.brand-photo:hover img { transform: scale(1.05); }
+.brand.brand-photo { position: relative; }
+.brand.brand-photo span { display: block; padding: 18px 20px 4px; font-size: 1.25rem; }
+.brand.brand-photo small { display: block; padding: 0 20px 20px; }
+.brand.brand-photo > img { overflow: hidden; }
+.brand.brand-photo { aspect-ratio: auto; justify-content: flex-start; background: var(--porcelain); border-radius: 16px; }

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&family=Wix+Madefor+Display:wght@400;500&family=Wix+Madefor+Text:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=136">
+  <link rel="stylesheet" href="css/style.css?v=138">
 </head>
 <body>
 
@@ -53,16 +53,18 @@
   </div>
 </section>
 
-<script src="js/brands-data.js?v=136"></script>
+<script src="js/brands-data.js?v=138"></script>
 <script>
   // Flaviker and Porcelaingres have no logo in the Drive folder, so they show the name only.
+  // Tile pictures are the ones used on the original site's Brands page, one per brand.
+  const PHOTO_KEY = { "emil-ceramica": "emil", "sant-agostino": "santagostino" };
   document.getElementById("brands").innerHTML = BRANDS.map((b) => `
-    <a class="brand${b.logo ? "" : " nologo"}" href="brand.html?b=${b.slug}">
-      ${b.logo ? `<img src="${b.logo}?v=136" alt="${b.name} logo" loading="lazy">` : `<h3>${b.name}</h3>`}
+    <a class="brand brand-photo" href="brand.html?b=${b.slug}">
+      <img src="assets/brands/photo-${PHOTO_KEY[b.slug] || b.slug}.jpg?v=138" alt="${b.name}" loading="lazy">
       <span>${b.name}</span>
       <small>Learn More</small>
     </a>`).join("");
 </script>
-<script src="js/main.js?v=136"></script>
+<script src="js/main.js?v=138"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&family=Wix+Madefor+Display:wght@400;500&family=Wix+Madefor+Text:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=67">
+  <link rel="stylesheet" href="css/style.css?v=68">
 </head>
 <body class="page-light">
 
@@ -42,6 +42,7 @@
 </section>
 
 <script>
+  const IDS = ["DMu-NDaM_Fk", "rPTByxIDrkI", "CH_dNNDkETY", "WO4O1EQezak", "6CjA-U8Py0E"];
   const EPISODES = [
     "KYAD | S2 | Karl Wadia | Ar.Hafeez Contractor",
     "Kyad | Pune Edition | Ajinkya and Sanam Dhumal | Infinity",
@@ -52,10 +53,13 @@
   document.getElementById("ep-list").innerHTML = EPISODES.map((t, i) => `
     <div class="episode">
       <span class="num">${String(i + 1).padStart(2, "0")}</span>
+      <a class="thumb" href="https://www.youtube.com/watch?v=${IDS[i]}" target="_blank" rel="noopener" aria-label="Watch: ${t}">
+        <img src="https://i.ytimg.com/vi/${IDS[i]}/hqdefault.jpg" alt="">
+      </a>
       <span class="t">${t}</span>
-      <a class="btn" style="margin:0" href="https://www.youtube.com/@luxe.surfaces/search?query=${encodeURIComponent(t)}" target="_blank" rel="noopener">Watch</a>
+      <a class="btn" style="margin:0" href="https://www.youtube.com/watch?v=${IDS[i]}" target="_blank" rel="noopener">Watch</a>
     </div>`).join("");
 </script>
-<script src="js/main.js?v=67"></script>
+<script src="js/main.js?v=68"></script>
 </body>
 </html>

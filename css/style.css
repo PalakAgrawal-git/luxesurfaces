@@ -874,3 +874,8 @@ h1, h2, h3, h4, .serif, .logo, .curtain-logo, .card .num, .episode .num, .episod
 .episode:hover { background: rgba(207, 197, 180, .35); }
 .episode:hover .num { color: var(--navy); }
 @media (max-width: 700px) { .episode { grid-template-columns: 40px 1fr; } .episode .t { font-size: 1.2rem; } }
+.episode { grid-template-columns: 56px 220px 1fr auto; }
+.episode .thumb { display: block; aspect-ratio: 16/9; overflow: hidden; border-radius: 6px; background: var(--stone); }
+.episode .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease-out); }
+.episode:hover .thumb img { transform: scale(1.06); }
+@media (max-width: 700px) { .episode { grid-template-columns: 36px 1fr; } .episode .thumb { grid-column: 1 / -1; grid-row: 2; } .episode .t { grid-column: 2; grid-row: 1; } .episode .btn { grid-column: 1 / -1; grid-row: 3; justify-self: start; } }

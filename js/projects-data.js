@@ -75,7 +75,7 @@ const PROJECTS = [
     slug: "wadhwa-one",
     title: "Wadhwa One",
     place: "BKC, Mumbai",
-    cover: "assets/clients/wadhwa.jpg",
+    cover: "assets/clients/wadhwa.png",
     coverIsLogo: true,
     images: [],
     facts: [["Area", "5,000 sq ft of interior wall application"], ["Slabs", "3000 × 1500 mm, 6 mm thick"], ["Finish", "Polished"], ["Material", "Calacatta, Marmi MarmiMax series"]],

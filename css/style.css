@@ -983,3 +983,9 @@ a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(
 .card.person h3 { margin-top: 20px; }
 .card.person p { padding-bottom: 28px; }
 .card.person, .card.person img { border-top-left-radius: 20px; border-top-right-radius: 20px; }
+
+/* Wadhwa One (logo only) matches the photo cards: tinted fill plus the same navy caption fade */
+.img-card.logo-card { background: var(--beige); border: 0; }
+.img-card.logo-card .label { background: linear-gradient(to top, rgba(28, 54, 112, .92) 0%, rgba(28, 54, 112, .6) 60%, rgba(28, 54, 112, 0) 100%); }
+.img-card.logo-card .label h3, .img-card.logo-card .label small, .img-card.logo-card:hover .label small { color: var(--porcelain); }
+.proj-logo { background: var(--beige); border-radius: var(--img-r); }

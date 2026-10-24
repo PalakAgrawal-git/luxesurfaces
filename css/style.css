@@ -1023,3 +1023,9 @@ a:not(.btn):not(.img-card):not(.brand):not(.thumb) { text-decoration-color: var(
 .podcast-about .media video { object-fit: contain; width: 100%; height: auto; max-height: 100%; background: #fff; }
 /* Keeps the white menu readable over bright video without tinting the picture */
 .brands-hero::before, .podcast-hero::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 130px; background: linear-gradient(to bottom, rgba(0, 0, 0, .38), rgba(0, 0, 0, 0)); z-index: 1; pointer-events: none; }
+
+/* Team cards: light text panel under the photo (not blue) */
+.person.card, .card.person { background: var(--porcelain); }
+.person.card:hover, .card.person:hover { background: var(--porcelain); box-shadow: 0 14px 30px rgba(28, 54, 112, .14); }
+.person.card h3, .card.person h3 { color: var(--navy); }
+.person.card p, .card.person p { color: var(--charcoal); }

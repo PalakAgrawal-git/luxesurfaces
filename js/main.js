@@ -145,7 +145,7 @@ const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const hero = document.querySelector(".hero");
 const heroMedia = hero && hero.querySelector("video, img");
 const heroCopy = hero && hero.querySelector(".hero-inner");
-const driftImgs = [...document.querySelectorAll(".split .media img, .split .media video, .gallery figure img, .img-card:not(.logo-card) img")];
+const driftImgs = [...document.querySelectorAll(".split .media:not(.fit-video) img, .split .media:not(.fit-video) video, .gallery figure img, .img-card:not(.logo-card) img")];
 driftImgs.forEach((m) => { m.dataset.drift = ""; m.style.height = "115%"; });
 
 let ticking = false;
